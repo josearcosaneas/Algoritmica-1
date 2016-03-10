@@ -3,3 +3,4 @@ ALGORITMO		CONSTANTES OCULTAS		ERROR
 Mergesort		a0 = 2.33821e-08		+/- 1.564e-10    (0.6689%)
 Heap (PC Jose)		a0 = 1.7445e-08       		+/- 3.142e-11    (0.1801%)
 
+Heapsort 		a0 = 2.00227e-08    		+/- 1.222e-10    (0.6104%)
