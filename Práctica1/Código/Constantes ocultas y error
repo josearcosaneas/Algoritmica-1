@@ -3,3 +3,5 @@ ALGORITMO		CONSTANTES OCULTAS		ERROR
 Mergesort		a0 = 2.33821e-08		+/- 1.564e-10    (0.6689%)
 
 Heapsort 		a0 = 2.00227e-08    		+/- 1.222e-10    (0.6104%)
+
+Burbuja         a0 = 3.20873e-09        +/- 1.403e-11    (0.4372%)
