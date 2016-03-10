@@ -2,3 +2,4 @@ ALGORITMO		CONSTANTES OCULTAS		ERROR
 
 Mergesort		a0 = 2.33821e-08		+/- 1.564e-10    (0.6689%)
 
+Heapsort 		a0 = 2.00227e-08    		+/- 1.222e-10    (0.6104%)
