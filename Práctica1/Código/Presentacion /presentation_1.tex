@@ -83,9 +83,9 @@
 %	TITLE PAGE
 %----------------------------------------------------------------------------------------
 
-\title[Short title]{Practica 1: Eficiencia} % The short title appears at the bottom of every slide, the full title is only on the title page
+\title[Practica 1]{Practica 1: Eficiencia} % The short title appears at the bottom of every slide, the full title is only on the title page
 
-\author{Algorítmica} % Your name
+\author{Algoritmica} % Your name
 \institute[UGR] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
 {
 Universidad de Granada \\ % Your institution for the title page
@@ -109,13 +109,119 @@ Universidad de Granada \\ % Your institution for the title page
 %	PRESENTATION SLIDES
 %----------------------------------------------------------------------------------------
 
+\section{Introduccion }
+\begin{frame}
+	\frametitle{Introduccion}
+	\begin{itemize}
+		\item El objetivo de ésta práctica era analizar eficiencias de forma empírica e híbrida.
+		\item Para ello, hemos recogido los diferentes tiempos de los diferentes algoritmos que se ofrecían y los hemos comparado.
+		\item En nuestro caso concreto, hemos utilizado la biblioteca de C++ más moderna y precisa destinado a obtener tiempos de reloj: la biblioteca \textbf{chrono}
+	
+	\end{itemize}
+\end{frame}
+
+
 %------------------------------------------------
 \section{Ordenacion} % Sections can be created in order to organize your presentation into discrete blocks, all sections and subsections are automatically printed in the table of contents as an overview of the talk
 %------------------------------------------------
+\begin{frame}
+	\frametitle{Ordenación}
+	Según hemos ido hemos estudiado, estos algoritmos que presentamos tienen teóricamente y calculando a partir del código una eficiencia de O(n ^2 ). Como esto es teórico, vamos a ver si efectivamente (o no) los algoritmos proporcionados se parecen a la grafica de n² recogiendo la informacion de 99 posibilidades distintas en cada algoritmo.
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.7\linewidth]{imagenes/n^2}
+		\caption{}
+		\label{fig:E1}
+	\end{figure}
+
+\end{frame}
 
 \subsection{Burbuja}
+\begin{frame}
+	\frametitle{Burbuja}
+	La gráfica empírica obtenida ha sido:
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.7\linewidth]{imagenes/burbuja-experimental.png}
+		\caption{}
+		\label{fig:E2}
+	\end{figure}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Burbuja}
+	La gráfica híbrida obtenida ha sido:
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.7\linewidth]{imagenes/burbuja-híbrida}
+		\caption{}
+		\label{fig:E3}
+	\end{figure}	
+\end{frame}
+
+
+
+
+
 \subsection{Seleccion}
+\begin{frame}
+	\frametitle{Selección}
+	La gráfica empírica obtenida ha sido:
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.7\linewidth]{imagenes/seleccionLines.png}
+		\caption{}
+		\label{fig:E4}
+	\end{figure}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Selección}
+	La gráfica híbrida obtenida ha sido:
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.7\linewidth]{imagenes/seleccion-hibrida.png}
+		\caption{}
+		\label{fig:E5}
+	\end{figure}
+	
+\end{frame}
 \subsection{Insercion}
+\begin{frame}
+	\frametitle{Inserción}
+	La gráfica empírica obtenida ha sido:
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.7\linewidth]{imagenes/insercion.png}
+		\caption{}
+		\label{fig:E2}
+	\end{figure}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Inserción}
+	La gráfica híbrida obtenida ha sido:
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.7\linewidth]{imagenes/algoritmoInsercion-hibrida}
+		\caption{}
+		\label{fig:E3}
+	\end{figure}
+	
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Inserción}
+	Por ultimo, mostramos el porcentaje de error a la hora de obtener las constantes ocultas es muy bajo.
+	
+	
+	
+\end{frame}
+
 
 \section{Ordenacion rapida} % Sections can be created in order to organize your presentation into discrete blocks, all sections and subsections are automatically printed in the table of contents as an overview of the talk
 %------------------------------------------------
@@ -128,10 +234,6 @@ Universidad de Granada \\ % Your institution for the title page
 \section{Hanoi}
 
 
-\begin{frame}
-\frametitle{Paragraphs of Text}
-
-\end{frame}
 
 %------------------------------------------------
 
