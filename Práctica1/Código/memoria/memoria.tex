@@ -7,7 +7,7 @@
 \normalfont \normalsize 
 \textsc{{\bf Algorítmica (2015-2016)} \\ Grado en Ingeniería Informática \\ Universidad de Granada} \\ [25pt] % Your university, school and/or department name(s)
 \horrule{0.5pt} \\[0.4cm] % Thin top horizontal rule
-\huge Práctica 1: Análisis de eficiendia de algoritmo \\ % The assignment title
+\huge Práctica 1: Análisis de eficiencia de algoritmos \\ % The assignment title
 \horrule{2pt} \\[0.5cm] % Thick bottom horizontal rule
 }
 
@@ -34,25 +34,22 @@
 \newpage
 
 \section{Introducción }
-\begin{frame}
+
+El objetivo de ésta práctica es analizar eficiencias de forma empírica e híbrida.
+Para ello, hemos recogido los diferentes tiempos de los diferentes algoritmos que se ofrecían y los hemos comparado.
+En nuestro caso concreto, hemos utilizado la biblioteca de C++ más moderna y precisa destinado a obtener tiempos de reloj: la biblioteca \textbf{chrono}
+
+La máquina que hemos utilizado tiene las siguientes características:
 	
-	\begin{itemize}
-		\item El objetivo de ésta práctica es analizar eficiencias de forma empírica e híbrida.
-		\item Para ello, hemos recogido los diferentes tiempos de los diferentes algoritmos que se ofrecían y los hemos comparado.
-		\item En nuestro caso concreto, hemos utilizado la biblioteca de C++ más moderna y precisa destinado a obtener tiempos de reloj: la biblioteca \textbf{chrono}
-	\end{itemize}
-\end{frame}
-\begin{frame}
-	
-	\begin{itemize}
+\begin{itemize}
 		
-		\item Procesador: Intel Core i5-3337U (2.7GHz x 2)
-		\item Memoria RAM: 4GB
-		\item Disco Duro: 500GB 5400 rpm
-		\item SO: Manjaro Linux 15.2 Capella 64 bits
-	\end{itemize}
+	\item Procesador: Intel Core i5-3337U (2.7GHz x 2)
+	\item Memoria RAM: 4GB
+	\item Disco Duro: 500GB 5400 rpm
+	\item SO: Manjaro Linux 15.2 Capella 64 bits
+\end{itemize}
 	
-\end{frame}
+
 
 
 %------------------------------------------------
@@ -202,7 +199,7 @@ Este algoritmo lo hemos ejecutado en otra máquina más potente, de esta manera,
 	\item S.O: Linux Mint 17.3 Cinnamon 64-bit
 \end{itemize}
 El ajuste de ambas gráficas es el siguiente:
-\begin{figure}[htb]
+\begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.5]{imagenes/HeapComparado.png}
 	\caption{Comparación en dos máquinas. Heapsort.}
