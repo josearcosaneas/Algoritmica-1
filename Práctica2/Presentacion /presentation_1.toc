@@ -1,0 +1,7 @@
+\beamer@endinputifotherversion {3.36pt}
+\select@language {spanish}
+\beamer@sectionintoc {1}{Introducci\IeC {\'o}n }{3}{0}{1}
+\beamer@sectionintoc {2}{Ejercicio}{4}{0}{2}
+\beamer@sectionintoc {3}{Fuerza bruta}{5}{0}{3}
+\beamer@sectionintoc {4}{Algoritmo DyV}{7}{0}{4}
+\beamer@sectionintoc {5}{Comparaci\IeC {\'o}n}{9}{0}{5}
