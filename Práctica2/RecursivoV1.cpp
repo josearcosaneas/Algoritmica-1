@@ -71,9 +71,12 @@ void print(matrix v)
  */
 matrix merge( matrix v1,  matrix v2){
 
+	
+	print(v1);
+	print(v2);
 	int f1 = 0,f2 = 0,c1 = 0,c2 = 0, fr=0, cr=0;
 	
-	matrix v_resultado(v1.datos.size()+v2.datos.size(),v1.datos.at(0).size());
+	matrix v_resultado(1,v1.datos.at(0).size()+v2.datos.at(0).size());
 
 	//Meter números ordenados en el vector ordenado
 	while(f1 < v1.datos.size() && f2 < v2.datos.size() && c1 < v1.datos.at(0).size() && c2 < v2.datos.at(0).size()){
@@ -83,13 +86,25 @@ matrix merge( matrix v1,  matrix v2){
 			cr++;
 		}
 		else{
-			v_resultado.datos[fr][cr] = v1.datos.at(f2).at(c2);
+			v_resultado.datos[fr][cr] = v2.datos.at(f2).at(c2);
 			c2++;
 			cr++;
 		}
-		if (c1+1 % v1.datos.at(0).size()) f1++;
-		if (c2+1 % v1.datos.at(0).size()) f2++;
-		if (cr+1 % v1.datos.at(0).size()) fr++;
+		if (c1+1 % v1.datos.at(0).size()==0)
+			{
+				f1++;
+				c1 = 0;
+			}
+		if (c2+1 % v1.datos.at(0).size()==0)
+			{
+				f2++;
+				c2 = 0;
+			}
+		if (cr+1 % v1.datos.at(0).size()==0)
+		{
+			fr++;
+			cr = 0;
+		}
 
 	}
 
@@ -116,7 +131,7 @@ matrix merge( matrix v1,  matrix v2){
 		}
 			
 	}
-
+	print(v_resultado);
 	return v_resultado;
 }
 
@@ -129,13 +144,14 @@ matrix merge( matrix v1,  matrix v2){
  * @return resultAux : vector ordenado a partir 
  */
 
-matrix mergeKvectors(matrix &vectores)
+matrix mergeKvectors(matrix vectores)
 {
 
 
     if (vectores.datos.size() <= 1)
     {
-    	
+    	cout << "Saliendo" << endl;
+    	print(vectores);
         return vectores;
     }
     	
@@ -154,8 +170,6 @@ matrix mergeKvectors(matrix &vectores)
     matrix up (middle ,vectores.datos.at(0).size());
 	matrix down (vectores.datos.size() - middle,vectores.datos.at(0).size());	
 	
-
-    matrix resultAux(100,100);
     vector<int> Aux;
 	
     
@@ -179,9 +193,16 @@ matrix mergeKvectors(matrix &vectores)
     print(down);
     up = mergeKvectors(up);
     down = mergeKvectors(down);
+
+    /*int tama_columnas = 0;
+	for(int i = 0; i < vectores.datos.size();i++)
+	{
+		tama_columnas += vectores.datos.at(i).size();
+	}*/
+    matrix resultAux(1,up.datos.at(0).size()+down.datos.at(0).size());
     resultAux = merge(up, down);
 
- 
+ 	print(resultAux);
 	return resultAux;   
 }
 /*
