@@ -1,0 +1,62 @@
+--------------------------------------------------------------------
+fuerzabruta_bueno.cpp											   |
+--------------------------------------------------------------------
+El procedimiento es simple: Se leen los dos primeros vectores y se 
+mezclaz con la función combina vectores. Después se lee el tercer 
+verctor y se combina con el resultado anterior, el proceso sigue hasta 
+el último vector
+--------------------------------------------------------------------
+recursivoDV.cpp                                                    |
+--------------------------------------------------------------------
+En este código solo he guardado lo que creo que esta bien.
+El procedimiento siguiente es el que intento seguir.
+
+
+Procedimiento:
+	
+	Leer vectores y guardar en matriz.
+	
+	recursivo(matriz): 
+
+		si el tamaño de la matriz en menor o igual a una fila
+
+			return --- primera fila	
+
+		si el tamaño de la matriz es mayor a una fila.
+
+			dividir en dos el numero de filas
+			subdividir la matriz por filas en dos matrices con la mitad
+			de filas que la original. (up,down)
+
+			up = recursivo(up)
+			down = recursivo(down)
+			final = merge2matrix(up,down)
+
+		return final		
+--------------------------------------------------------------------
+RecursivoV1.cpp													   |
+--------------------------------------------------------------------	
+En este archivo lo que he intentado es salvar los problemas que surgen 
+por las estructuras de datos vector vector.
+Creo que solo le falta una cosa.
+
+	
+	Leer vectores y guardar en matriz.
+	
+	recursivo(matriz): 
+
+		si el tamaño de la matriz en menor o igual a una fila
+
+			return --- primera fila	
+
+		si el tamaño de la matriz es mayor a una fila.
+
+			dividir en dos el numero de filas
+			subdividir la matriz por filas en dos matrices con la mitad
+			de filas que la original. (up,down)
+
+			up = recursivo(up)
+			down = recursivo(down)
+			final = merge2matrix(up,down)
+
+		return final		
