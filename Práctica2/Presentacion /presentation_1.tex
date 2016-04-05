@@ -17,6 +17,7 @@
 
 \documentclass{beamer}
 \usepackage[spanish]{babel}
+ \usepackage{algpseudocode}
 \usepackage[utf8]{inputenc}
 \mode<presentation> {
 
@@ -135,20 +136,20 @@ Universidad de Granada \\ % Your institution for the title page
 %------------------------------------------------
 \begin{frame}
 	\frametitle{Pseudocódigo}
-		-V1 = V[0]; \\
-		
-		-Vfinal = V[1];\\
-		
-		-Vfinal = OrdenarVectores(V1,Vfinal);\\
-		
-		-From V[i..K-1]:\\
-		
-			-V1=V[i];\\
-			
-			-Vfinal= OrdenarVectores(V1,Vfinal);\\
-			
-			-i++;\\
-			
+    
+    Algoritmo Fuerza bruta.
+	\begin{algorithmic}
+	\Require Vectores ordenados, numero de estos y tamaño
+	
+ 	\State{V1 = V[0]}
+ 	\State{Vfinal = V[1]}
+ 	\State{Vfinal = OrdenarVectores(V1,Vfinal)}
+	\For {i=2 hasta i=k-1 }
+ 	   \State{V1=V[i]; }
+ 	   \State{Vfinal= OrdenarVectores(V1,Vfinal);}
+  	   \State{i++;}
+	\EndFor
+	\end{algorithmic}	
 	
 \end{frame}
 
@@ -162,13 +163,26 @@ Universidad de Granada \\ % Your institution for the title page
 %------------------------------------------------
 \begin{frame}
 	\frametitle{Pseudocódigo}
-	-V1 = V[0];
-	-Vfinal = V[1];
-	-Vfinal = OrdenarVectores(V1,Vfinal);
-	-From V[i..K-1]:
-	-V1=V[i];
-	-Vfinal= OrdenarVectores(V1,Vfinal);
-	-i++;
+    Algoritmo Recursivo Divide y Vencerás.
+    \\
+    \textbf{Recursivo(matriz)}
+	\begin{algorithmic}	
+	\Require Matriz de vectores
+	\If{ Si el numero de vectores menor o igual a 1}	
+	
+		\Return La matriz con una fila
+	\Else{ Si el número de vectores es mayor que 1 }		 
+		 \State{middle=nº filas/2 }
+		 \State{Up = matriz[:middle][num\_colum]}
+		 \State{Down = matriz[middle:][num\_colum]}
+		 \State{Up = Recursivo(Up)}
+		 \State{Down = Recursivo(Down)}		 
+		 \State{Result = Merge(Up, Down) }
+		 
+         \Return Result
+	\EndIf
+	
+	\end{algorithmic}	
 	
 \end{frame}
 
