@@ -6,6 +6,10 @@
 #include <string>
 #include <fstream>
 #include <vector>
+#include <chrono>
+using namespace std::chrono;
+high_resolution_clock::time_point tantes, tdespues;
+duration<double> transcurrido;
 
 using namespace std;
 
@@ -36,13 +40,13 @@ vector<int> combinarVectores(const vector<int> v1, const vector<int> v2){
 
 int main(int argc, char const *argv[]){
 
-	if (argc != 4){
-		cerr << "Formato " << argv[0] << "<ruta_del_archivo_de_entrada>  <num_elem>  <num_vect>" << endl;
+	if (argc != 3){
+		cerr << "Formato " << argv[0] << "<ruta_del_archivo_de_entrada>  <num_vect>" << endl;
 		return -1;
     }
 
 	int tam_vectores = atoi(argv[2]); //Tamaño vectores
-	int num_vectores = atoi(argv[3]); //Número vectores
+	int num_vectores = tam_vectores; //Número vectores
 	int num = 0;
 	string ruta=argv[1];
 	ifstream archivo(ruta.c_str());
@@ -51,6 +55,8 @@ int main(int argc, char const *argv[]){
 	vector<int> vectorRes;
 
 	//Rellenar los dos primeros vectores
+
+
 	for(int i = 0; i < 2*tam_vectores; i++){
 		archivo >> num;
 		if(i < tam_vectores)
@@ -69,12 +75,9 @@ int main(int argc, char const *argv[]){
 		}
 		vectorRes = combinarVectores(vector1, vectorRes);
 	}
-
-
-	for(int i = 0; i < vectorRes.size(); i++)
-		cout << vectorRes.at(i) << " ";
-
-	cout << endl;
+	tdespues = high_resolution_clock::now();
+	transcurrido = duration_cast<duration<double>>(tdespues - tantes);
+	cout <<  tam_vectores << " "<< transcurrido.count() << endl;
 
 	return 0;
 }

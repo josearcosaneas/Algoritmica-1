@@ -8,15 +8,18 @@ using namespace std;
 #include <fstream>
 //#include <algorithm>
 #include <vector>
-
+#include <chrono>
+using namespace std::chrono;
+high_resolution_clock::time_point tantes, tdespues;
+duration<double> transcurrido;
 
 
 int main(int argc, char * argv[])
 {
 
-  if (argc != 4)
+  if (argc != 3)
     {
-      cerr << "Formato " << argv[0] << "<ruta_del_archivo_de_entrada>  <num_elem>  <num_vect>" << endl;
+      cerr << "Formato " << argv[0] << "<ruta_del_archivo_de_entrada> <num_vect>" << endl;
       return -1;
     }
 
@@ -26,7 +29,7 @@ int main(int argc, char * argv[])
 
     */
   int n = atoi(argv[2]);
-  int k=atoi(argv[3]);
+  int k=n;
   int a=0;
   int num;
   string ruta=argv[1];
@@ -37,6 +40,7 @@ int main(int argc, char * argv[])
   gigante.push_back(num);
   a++;
 }
+tantes = high_resolution_clock::now();
 
  for(int i=0;i<gigante.size()-1;i++)
     for (int j=i+1; j<gigante.size(); j++)
@@ -45,8 +49,8 @@ int main(int argc, char * argv[])
         gigante.at(i) = gigante.at(j);
         gigante.at(j) = num;
       }
+  tdespues = high_resolution_clock::now();
+  transcurrido = duration_cast<duration<double>>(tdespues - tantes);
+  cout <<  n << " "<< transcurrido.count() << endl;
 
-
-for(int i=0;i<gigante.size();i++)
-  cout<<gigante.at(i);
 }

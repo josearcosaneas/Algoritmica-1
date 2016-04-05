@@ -6,6 +6,10 @@
 #include <string>
 #include <fstream>
 #include <vector>
+#include <chrono>
+using namespace std::chrono;
+high_resolution_clock::time_point tantes, tdespues;
+duration<double> transcurrido;
 
 using namespace std;
 
@@ -60,7 +64,7 @@ void print(matrix v)
 		}
 		cout << endl;
 	}
-	
+
 }
 
 /*
@@ -174,12 +178,12 @@ int main(int argc, char const *argv[]){
 			vectorT.datos[i][j] = num;
 		}
 	}
+	tantes = high_resolution_clock::now();
 
-	cout << endl << endl << "MATRIZ ORIGINAL: " << endl;	
-	print(vectorT);
 	vectorAux = mergeKvectors(vectorT);
+	tdespues = high_resolution_clock::now();
+	transcurrido = duration_cast<duration<double>>(tdespues - tantes);
+	cout <<  tam_vectores << " "<< transcurrido.count() << endl;
 
-	cout << endl << endl << "MATRIZ RESULTADO: " << endl;
-	print(vectorAux);
 	return 0;
 }
