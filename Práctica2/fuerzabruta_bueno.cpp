@@ -55,8 +55,16 @@ int main(int argc, char const *argv[]){
 	vector<int> vectorRes;
 
 	//Rellenar los dos primeros vectores
+<<<<<<< HEAD
 	tantes = high_resolution_clock::now();
+=======
 
+	tantes = high_resolution_clock::now();
+<<<<<<< HEAD
+=======
+>>>>>>> 9eeacb32a4821043835963fbfa13886f48a20793
+
+>>>>>>> fee33b4864ee3af3163eca8923612ca9763d2341
 	for(int i = 0; i < 2*tam_vectores; i++){
 		archivo >> num;
 		if(i < tam_vectores)

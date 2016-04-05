@@ -7,7 +7,10 @@ printf "" > ./salidas-algoritmos/salidadyv.dat
 g++ -o fuerzabruta_bueno fuerzabruta_bueno.cpp -std=gnu++0x
 g++ -o fuerzabruta fuerzabruta.cpp -std=gnu++0x
 g++ -o recursivoV1 RecursivoV1.cpp -std=gnu++0x
+<<<<<<< HEAD
 
+=======
+>>>>>>> 9eeacb32a4821043835963fbfa13886f48a20793
 
 ./fuerzabruta_bueno ./salidas-mezclavectores/salida55.txt 5 >> ./salidas-algoritmos/salidabrutabuena.dat
 ./fuerzabruta_bueno ./salidas-mezclavectores/salida1010.txt 10 >> ./salidas-algoritmos/salidabrutabuena.dat
@@ -23,8 +26,6 @@ g++ -o recursivoV1 RecursivoV1.cpp -std=gnu++0x
 ./fuerzabruta_bueno ./salidas-mezclavectores/salida500500.txt 500 >> ./salidas-algoritmos/salidabrutabuena.dat
 ./fuerzabruta_bueno ./salidas-mezclavectores/salida700700.txt 700 >> ./salidas-algoritmos/salidabrutabuena.dat
 ./fuerzabruta_bueno ./salidas-mezclavectores/salida10001000.txt 1000 >> ./salidas-algoritmos/salidabrutabuena.dat
-   
-
 
 ./fuerzabruta ./salidas-mezclavectores/salida55.txt 5 >> ./salidas-algoritmos/salidabruta.dat
 ./fuerzabruta ./salidas-mezclavectores/salida1010.txt 10 >> ./salidas-algoritmos/salidabruta.dat
@@ -37,9 +38,7 @@ g++ -o recursivoV1 RecursivoV1.cpp -std=gnu++0x
 ./fuerzabruta ./salidas-mezclavectores/salida120120.txt 120 >> ./salidas-algoritmos/salidabruta.dat
 ./fuerzabruta ./salidas-mezclavectores/salida160160.txt 160 >> ./salidas-algoritmos/salidabruta.dat
 ./fuerzabruta ./salidas-mezclavectores/salida200200.txt 200 >> ./salidas-algoritmos/salidabruta.dat
-./fuerzabruta ./salidas-mezclavectores/salida500500.txt 500 >> ./salidas-algoritmos/salidabruta.dat
-./fuerzabruta ./salidas-mezclavectores/salida700700.txt 700 >> ./salidas-algoritmos/salidabruta.dat
-./fuerzabruta ./salidas-mezclavectores/salida10001000.txt 1000 >> ./salidas-algoritmos/salidabruta.dat
+
 
 ./recursivoV1 ./salidas-mezclavectores/salida55.txt 5 5 >> ./salidas-algoritmos/salidadyv.dat
 ./recursivoV1 ./salidas-mezclavectores/salida1010.txt 10 10 >> ./salidas-algoritmos/salidadyv.dat
