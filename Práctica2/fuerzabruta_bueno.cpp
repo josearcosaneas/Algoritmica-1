@@ -55,7 +55,7 @@ int main(int argc, char const *argv[]){
 	vector<int> vectorRes;
 
 	//Rellenar los dos primeros vectores
-
+	tantes = high_resolution_clock::now();
 
 	for(int i = 0; i < 2*tam_vectores; i++){
 		archivo >> num;

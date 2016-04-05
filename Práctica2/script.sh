@@ -6,7 +6,7 @@ printf "" > ./salidas-algoritmos/salidadyv.dat
 
 g++ -o fuerzabruta_bueno fuerzabruta_bueno.cpp -std=gnu++0x
 g++ -o fuerzabruta fuerzabruta.cpp -std=gnu++0x
-g++ -o recursivoV1 recursivoV1.cpp -std=gnu++0x
+g++ -o recursivoV1 RecursivoV1.cpp -std=gnu++0x
 
 
 ./fuerzabruta_bueno ./salidas-mezclavectores/salida55.txt 5 >> ./salidas-algoritmos/salidabrutabuena.dat
