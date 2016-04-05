@@ -1,0 +1,6 @@
+\select@language {spanish}
+\contentsline {section}{\numberline {1}Introducci\IeC {\'o}n}{3}
+\contentsline {section}{\numberline {2}Fuerza bruta}{3}
+\contentsline {section}{\numberline {3}Algoritmo DyV}{4}
+\contentsline {section}{\numberline {4}Comparaci\IeC {\'o}n}{5}
+\contentsline {section}{\numberline {5}Porcentaje de error y constantes ocultas}{6}

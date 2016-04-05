@@ -85,7 +85,7 @@
 %	TITLE PAGE
 %----------------------------------------------------------------------------------------
 
-\title[Practica 1]{Practica 2: Divide y vencerás} % The short title appears at the bottom of every slide, the full title is only on the title page
+\title[Practica 1]{Práctica 2: Divide y vencerás} % The short title appears at the bottom of every slide, the full title is only on the title page
 
 \author{Algorítmica} % Your name
 \institute[UGR] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
@@ -103,7 +103,7 @@ Universidad de Granada \\ % Your institution for the title page
 \end{frame}
 
 \begin{frame}
-\frametitle{Indice} % Table of contents slide, comment this block out to remove it
+\frametitle{Índice} % Table of contents slide, comment this block out to remove it
 \tableofcontents % Throughout your presentation, if you choose to use \section{} and \subsection{} commands, these will automatically be printed on this slide as an overview of your presentation
 \end{frame}
 
@@ -156,6 +156,12 @@ Universidad de Granada \\ % Your institution for the title page
 \begin{frame}
 	\frametitle{Eficiencia}
 
+	\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\linewidth]{../salidas-algoritmos/fuerzabruta-hibrida}
+\caption{La eficiencia resultante es de n cubo}
+\label{fig:fuerzabruta-hibrida}
+\end{figure}
 	
 \end{frame}
 
@@ -163,12 +169,12 @@ Universidad de Granada \\ % Your institution for the title page
 %------------------------------------------------
 \begin{frame}
 	\frametitle{Pseudocódigo}
-    Algoritmo Recursivo Divide y Vencerás.
+    La estructura y el funcionamiento de nuestro código es el siguiente:
     \\
     \textbf{Recursivo(matriz)}
 	\begin{algorithmic}	
 	\Require Matriz de vectores
-	\If{ Si el numero de vectores menor o igual a 1}	
+	\If{ Si el número de vectores menor o igual a 1}	
 	
 		\Return La matriz con una fila
 	\Else{ Si el número de vectores es mayor que 1 }		 
@@ -188,8 +194,13 @@ Universidad de Granada \\ % Your institution for the title page
 
 \begin{frame}
 	\frametitle{Eficiencia}
-	
-	
+		
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width=0.7\linewidth]{../salidas-algoritmos/dyv-hibrida.png}
+				\caption{	La eficiencia obtenida ha resultado ser de n cuadrado ,mejorando en un orden al de fuerza bruta.}
+				\label{fig:fuerzabruta-hibrida}
+			\end{figure}
 \end{frame}
 
 \section{Comparación} % Sections can be created in order to organize your presentation into discrete blocks, all sections and subsections are automatically printed in the table of contents as an overview of the talk
@@ -202,8 +213,28 @@ Universidad de Granada \\ % Your institution for the title page
 
 \begin{frame}
 	\frametitle{Comparación}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.7\linewidth]{../salidas-algoritmos/comparacion.png}
+		\caption{Figura perteneciente a la comparación entre ambas eficiencias}
+		\label{fig:fuerzabruta-hibrida}
+	\end{figure}
 	
-	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Porcentaje de error y constantes ocultas}
+
+\begin{center}
+	\begin{tabular}{| l | c | r |}
+		\hline
+		\textbf{Algoritmo} & \textbf{Constante Oculta} & \textbf{Error} \\ \hline
+		DyV & a0 = 1.69804e-06  & +/- 1.226e-08    (0.7218\%)\\ 
+		\hline
+		Fuerza bruta & a0 = 2.69052e-08 & +/- 2.352e-11    (0.0874\%)
+		
+	\end{tabular}
+\end{center}
 \end{frame}
 
 \end{document} 

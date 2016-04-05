@@ -1,4 +1,5 @@
 \input{preambuloSimple.tex}
+ \usepackage{algpseudocode}
 %----------------------------------------------------------------------------------------
 %	TÍTULO Y DATOS DEL ALUMNO
 %----------------------------------------------------------------------------------------
@@ -56,295 +57,85 @@ La máquina que hemos utilizado tiene las siguientes características:
 \section{Fuerza bruta} % Sections can be created in order to organize your presentation into discrete blocks, all sections and subsections are automatically printed in the table of contents as an overview of the talk
 %------------------------------------------------
 
+En esta sección hemos diseñado un algoritmo de fuerza bruta cuyo funcionamiento es el siguiente:
 
-En esta parte hemos diseñado dos algoritmos distintos, el primero es un algoritmo muy ineficiente de fuerza bruta que lo que hará 
-\begin{figure}[H]
-	\centering
-	\includegraphics[scale=0.5]{imagenes/enecuadrado.png}
-	\caption{Gráfica de la función $n^2$}
-	\label{fig:E1}
+	\begin{algorithmic}
+		\Require Vectores ordenados, numero de estos y tamaño
+		
+		\State{V1 = V[0]}
+		\State{Vfinal = V[1]}
+		\State{Vfinal = OrdenarVectores(V1,Vfinal)}
+		\For {i=2 hasta i=k-1 }
+		\State{V1=V[i]; }
+		\State{Vfinal= OrdenarVectores(V1,Vfinal);}
+		\State{i++;}
+		\EndFor
+	\end{algorithmic}
+
+
+	\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\linewidth]{../salidas-algoritmos/fuerzabruta-hibrida}
+\caption{}
+\label{fig:fuerzabruta-hibrida}
 \end{figure}
 
 
 
-\subsection{Burbuja}
-
-
-La gráfica empírica obtenida ha sido:
-\begin{figure}[H]
-	\centering
-	\includegraphics[scale=0.5]{imagenes/burbuja-experimental.png}
-	\caption{Algoritmo de Burbuja, gráfica empírica.}
-	\label{fig:E2}
-\end{figure}
-
-
-
-
-
-La gráfica híbrida obtenida ha sido:
-\begin{figure}[H]
-	\centering
-	\includegraphics[scale=0.5]{imagenes/burbuja-hibrida.png}
-	\caption{Ajuste híbrido algoritmo Burbuja y función $n^2$}
-	\label{fig:E3}
-\end{figure}	
-
-
-
-
-
-
-\subsection{Selección}
-
-
-La gráfica empírica obtenida ha sido:
-\begin{figure}[H]
-	\centering
-	\includegraphics[scale=0.5]{imagenes/seleccionLines.png}
-	\caption{Algoritmo de selección, gráfica empírica. }
-	\label{fig:E4}
-\end{figure}
-
-
-
-
-La gráfica híbrida obtenida ha sido:
-\begin{figure}[H]
-	\centering
-	\includegraphics[scale=0.5]{imagenes/seleccion-hibrida.png}
-	\caption{Gráfica ajuste híbrido. Selección y $n^2$}
-	\label{fig:E5}
-\end{figure}
-
-
-\subsection{Inserción}
-
-La gráfica empírica obtenida ha sido:
-\begin{figure}[H]
-	\centering
-	\includegraphics[scale=0.5]{imagenes/insercion.png}
-	\caption{Algoritmo de Inserción, gráfica empírica.}
-	\label{fig:E6}
-\end{figure}
-
-
-La gráfica híbrida obtenida ha sido:
-\begin{figure}[H]
-	\centering
-	\includegraphics[scale=0.5]{imagenes/algoritmoInsercion-hibrida}
-	\caption{Gráfica ajuste híbrido. Inserción y $n^2$}
-	\label{fig:E7}
-\end{figure}
-Por último, mostramos el porcentaje de error así como las constantes ocultas obtenidas.\\
-\begin{center}
-	\begin{tabular}{| l | c | r |}
-		\hline
-		\textbf{Algoritmo} & \textbf{Constante Oculta} & \textbf{Error} \\
-		\hline
-		Burbuja & a0 = 3.20873e-09 & +/- 1.403e-11 (0.4372\%)\\ \hline
-		Selección & a0 = 1.61988e-09 & +/- 4.818e-12 (0.2975\%) \\ \hline		
-		Inserción & a0 = 1.45151e-09 &  +/- 8.337e-12    (0.5743\%) \\ \hline
-	\end{tabular}
-\end{center}
-
-
-\section{Ordenación rápida} % Sections can be crea es muy bajoted in order to organize your presentation into discrete blocks, all sections and subsections are automatically printed in the table of contents as an overview of the talk
+\section{Algoritmo DyV} % Sections can be crea es muy bajoted in order to organize your presentation into discrete blocks, all sections and subsections are automatically printed in the table of contents as an overview of the talk
 %------------------------------------------------
-Según hemos ido estudiado, estos algoritmos que presentamos tienen teóricamente y calculando a partir del código una eficiencia de $O(n*\log(n) )$. Como esto es teórico, vamos a ver si efectivamente (o no) los algoritmos proporcionados se parecen a la gráfica de $n*\log(n)$ recogiendo la información de 99 posibilidades distintas en cada algoritmo.
-\begin{figure}[H]
-	\centering
-	\includegraphics[scale=0.5]{imagenes/nlog(n)3.png}
-	\caption{Gráfica de la función $n*log(n)$}
-	\label{fig:E8}
-\end{figure}
-\subsection{Quick Sort}
-La gráfica empírica obtenida ha sido:
-\begin{figure}[H]
-	\centering
-	\includegraphics[scale=0.5]{imagenes/quicksort.png}
-	\caption{Algoritmo Quicksort, gráfica empírica. }
-	\label{fig:E9}
-\end{figure}
+ La estructura y el funcionamiento de nuestro código es el siguiente:
+ 
+ \textbf{Recursivo(matriz)}
+ \begin{algorithmic}	
+ 	\Require Matriz de vectores
+ 	\If{ Si el número de vectores menor o igual a 1}	
+ 	
+ 	\Return La matriz con una fila
+ 	\Else{ Si el número de vectores es mayor que 1 }		 
+ 	\State{middle=nº filas/2 }
+ 	\State{Up = matriz[:middle][num\_colum]}
+ 	\State{Down = matriz[middle:][num\_colum]}
+ 	\State{Up = Recursivo(Up)}
+ 	\State{Down = Recursivo(Down)}		 
+ 	\State{Result = Merge(Up, Down) }
+ 	
+ 	\Return Result
+ 	\EndIf
+ 	
+ \end{algorithmic}	
+ 
+ 	La eficiencia obtenida ha resultado ser de \textbf{n2} ,mejorando en un orden al de fuerza bruta.
+ 	\begin{figure}[H]
+ 		\centering
+ 		\includegraphics[width=0.7\linewidth]{../salidas-algoritmos/dyv-hibrida.png}
+ 		\caption{Figura perteneciente a la eficiencia híbrida obtenida}
+ 		\label{fig:fuerzabruta-hibrida}
+ 	\end{figure}
+ 	
+ \section{Comparación} % Sections can be created in order to organize your presentation into discrete blocks, all sections and subsections are automatically printed in the table of contents as an overview of the talk
+ %------------------------------------------------
+ 	En esta última sección, hemos comparado los dos algoritmos que hemos desarrollado, veremos si efectivamente o no nuestra implementación utilizando un enfoque divide y vencerás obtenemos mejoras con respecto a uno de fuerza bruta.
+ 	
+ 
 
-La gráfica híbrida obtenida ha sido:
-\begin{figure}[H]
-	\centering
-	\includegraphics[scale=0.5]{imagenes/quicksort-hibrida.png}
-	\caption{Gráfica híbrida Quicksort.}
-	\label{fig:E10}
-\end{figure}
+ 	\begin{figure}[H]
+ 		\centering
+ 		\includegraphics[width=0.7\linewidth]{../salidas-algoritmos/comparacion.png}
+ 		\caption{Figura perteneciente a la comparación entre ambas eficiencias}
+ 		\label{fig:fuerzabruta-hibrida}
+ 	\end{figure}
 
-\subsection{Heap Sort}
-La gráfica empírica obtenida ha sido:
-\begin{figure}[H]
-	\centering
-	\includegraphics[scale=0.5]{imagenes/heapsort.png}
-	\caption{Heapsort, gráfica empírica.}
-	\label{fig:E11}
-\end{figure}
-
-La gráfica híbrida obtenida ha sido:
-\begin{figure}[H]
-	\centering
-	\includegraphics[scale=0.5]{imagenes/heapsort-hibrida.png}
-	\caption{Heapsort, gráfica híbrida.}
-	\label{fig:E12}
-\end{figure}
-Este algoritmo lo hemos ejecutado en otra máquina más potente, de esta manera, podemos ver como varían los tiempos de ejecución del mismo algoritmo, ejecutado en dos máquinas distintas.
-\begin{itemize}
-	\item Procesador (frecuencia): Intel Core i7-5500U (3.0 GHz x 2)
-	\item Memoria RAM: 4 GB
-	\item Disco duro: SSD 256 GB
-	\item S.O: Linux Mint 17.3 Cinnamon 64-bit
-\end{itemize}
-El ajuste de ambas gráficas es el siguiente:
-\begin{figure}[H]
-	\centering
-	\includegraphics[scale=0.5]{imagenes/HeapComparado.png}
-	\caption{Comparación en dos máquinas. Heapsort.}
-	\label{fig:E13}
-\end{figure}
-
-\subsection{Merge Sort}
-La gráfica empírica obtenida ha sido:
-\begin{figure}[H]
-	\centering
-	\includegraphics[scale=0.5]{imagenes/mergesort.png}
-	\caption{Mergesort, gráfica empírica.}
-	\label{fig:E14}
-\end{figure}
-La gráfica híbrida obtenida ha sido:
-\begin{figure}[H]
-	\centering
-	\includegraphics[scale=0.5]{imagenes/mergesort-hibrida.png}
-	\caption{Mergesort, gráfica híbrida.}
-	\label{fig:E15}
-\end{figure}
+\section{Porcentaje de error y constantes ocultas}
 Por último, mostramos el porcentaje de error así como las constantes ocultas.\\
 \begin{center}
 	\begin{tabular}{| l | c | r |}
 		\hline
 		\textbf{Algoritmo} & \textbf{Constante Oculta} & \textbf{Error} \\ \hline
-		Mergesort & a0 = 2.33821e-08 & +/- 1.564e-10 (0.6689\%)\\ \hline
-		Quicksort & a0 = 1.43368e-08 & +/- 7.621e-11 (0.5315\%) \\ \hline
-		Heapsort & a0 = 2.00227e-08 & +/- 1.222e-10    (0.6104\%) \\ \hline
-	\end{tabular}
-\end{center}
-
-\section{Floyd}
-
-El algoritmo de Floyd, a diferencia de los anteriores, no es un algoritmo de ordenación. Su función, es la de encontrar el camino mínimo en grafos. La eficiencia teórica de este algoritmo es $O(n^3)$. Además de analizar la eficiencia empírica e híbrida, hemos realizado un ajuste erróneo, para demostrar que efectivamente la eficiencia de este algoritmo es la anteriormente mencionada.
-
-\subsection{Gráficas}
-\textbf{Gráfica Empírica}\\
-\\
-La gráfica empírica obtenida ha sido:
-\begin{figure}[H]
-	\centering
-	\includegraphics[scale=0.5]{imagenes/floyd.png}
-	\caption{Floyd, gráfica empírica.}
-	\label{fig:E16}
-\end{figure}
-
-
-
-\textbf{Gráfica Híbrida}\\
-\\
-La gráfica híbrida obtenida ha sido:
-\begin{figure}[H]
-	\centering
-	\includegraphics[scale=0.5]{imagenes/algoritmoFloyd-hibrida.png}
-	\caption{Floyd, gráfica híbrida.}
-	\label{fig:E17}
-\end{figure}
-
-
-\textbf{Ajuste Híbrido Erróneo}\\
-\\
-
-Ajuste híbrido erróneo ($O(n^3)$ ajustada a una función $O(n * log(n))$.
-\begin{figure}[H]
-	\centering
-	\includegraphics[scale=0.5]{imagenes/FloydError.png}
-	\caption{Floyd, ajuste erróneo.}
-	\label{fig:E18}
-\end{figure}
-
-
-\subsection{Porcentaje de error y constantes ocultas}
-Por último, mostramos el porcentaje de error así como las constantes ocultas de ambos ajustes.\\
-
-\begin{center}
-	\begin{tabular}{| l | c | r |}
+		DyV & a0 = 1.69804e-06  & +/- 1.226e-08    (0.7218\%)\\ 
 		\hline
-		\textbf{Algoritmo} & \textbf{Constante Oculta} & \textbf{Error} \\ \hline
-		Floyd & a0 = 7.59068e-09 & +/- 2.163e-11    (0.2849\%)\\ \hline
-		Floyd erróneo & a0 = 0.000908818 & +/- 0.0001093 (12.03\%) \\ \hline
-	\end{tabular}
-\end{center}
-
-
-
-\section{Hanoi}
-
-El algoritmo de Hanoi, se encarga específicamente de resolver el problema de las torres de Hanoi. Este algoritmo presenta una eficiencia teórica de $O(2^n)$, lo que hace que el número de entradas para este algoritmo sea muy reducido.
-
-\subsection{Gráficas}
-La gráfica empírica obtenida ha sido:
-\begin{figure}[H]
-	\centering
-	\includegraphics[scale=0.5]{imagenes/hanoiLines.png}
-	\caption{Hanoi, gráfica empírica.}
-	\label{fig:E19}
-\end{figure}
-
-La gráfica híbrida obtenida ha sido:
-\begin{figure}[H]
-	\centering
-	\includegraphics[scale=0.5]{imagenes/hanoi-hibrido.png}
-	\caption{Hanoi, gráfica híbrida.}
-	\label{fig:E20}
-\end{figure}
-
-
-
-\subsection{Comparaciones}
-En este algoritmo hemos hecho varias comparaciones:
-\begin{itemize}
-	\item Usando diferentes optimizaciones a la hora de compilar.
-	\item Utilizando un lenguaje de programación distinto (Python vs C++).
-\end{itemize}
-
-\subsection{Hanoi en Python}
-La gráfica híbrida de la ejecución en Python frente a la ejecución en C++ es:
-\begin{figure}[H]
-	\centering
-	\includegraphics[scale=0.5]{imagenes/HanoiPy.png}
-	\caption{Hanoi, Python - C++}
-	\label{fig:E21}
-\end{figure}
-
-
-
-\subsection{Hanoi con diferentes optimizaciones}
-A continuación mostramos una gráfica con los tiempos del algoritmo en función de su optimización:
-\begin{figure}[H]
-	\centering
-	\includegraphics[scale=0.5]{imagenes/HanoiComparacion.png}
-	\caption{Hanoi, gráfica con diferentes eficiencias.}
-	\label{fig:E22}
-\end{figure}
-
-
-
-\subsection{Porcentaje de error y constantes ocultas}
-Por último, mostramos el porcentaje de error así como las constantes ocultas.\\
-\begin{center}
-	\begin{tabular}{| l | c | r |}
-		\hline
-		\textbf{Algoritmo} & \textbf{Constante Oculta} & \textbf{Error} \\ \hline
-		Hanoi & a0 = 8.38461e-09 & +/- 3.095e-12    (0.03691\%)\\ \hline
+		Fuerza bruta & a0 = 2.69052e-08 & +/- 2.352e-11    (0.0874\%)
+		
 	\end{tabular}
 \end{center}
 
