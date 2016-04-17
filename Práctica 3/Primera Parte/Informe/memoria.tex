@@ -37,16 +37,6 @@
 \section{Introducción }
 
 El problema que vamos a tratar de resolver desde la aproximación de un algoritmo Greedy consiste en minimizar el número de visitas que debe realizar un granjero a su proveedor, es decir, nos encontramos frente a un problema de optimización.
-
-La máquina que hemos utilizado tiene las siguientes características:
-	
-\begin{itemize}
-		
-	\item Procesador: Intel Core i5-3337U (2.7GHz x 2)
-	\item Memoria RAM: 4GB
-	\item Disco Duro: 500GB 5400 rpm
-	\item SO: Manjaro Linux 15.2 Capella 64 bits
-\end{itemize}
 	
 %----------------------------------------------------------------------------------------
 
@@ -85,8 +75,23 @@ La solución devolverá una lista, con los dias en los que el granjero irá a  l
 
 %--------------------------------------------------------------------------------------------
 
+\section{Demostración que encuentra siempre la solución óptima}
+
+Vamos a demostrar que encuentra siempre la solución óptima por una reducción al absurdo:\\
+
+Sea $ L = g_0 < g_1 < ... < g_p $ el conjunto de días seleccionados por el algoritmo Greedy que \textbf{NO} es óptimo.\\
+Sea $ L_{op} = f_0 < f_1 < ... < f_p $ una de la soluciones optimas del problema.\\
+Sea $r$ el máximo valor posible hasta donde L y $L_{op}$ coinciden, es decir, $f_0=g:0, f_1=g_1,...,f_r = g_r$.\\
+Entonces, $g(r+1)$ será mayor que $f(r+1)$ (ya que hemos supuesto que es en r cuando dejan de ser iguales y donde se inclina la balanza a la solución optima).\\
+Por lo que $g_0 < ... < g_r < g(r+1) < f(r+2) < f_q $ es otra solucion al problema ya que  hemos llegado al final sin agotar el abono. Y ya que nuestro criterio para seleccionar es el día más lejano. Si f llega un momento que se separa de g (g es la nuestra). Quiere decir que una de dos. O selecciona más días (lo que ya no puede ser óptimo ya que la nuestra ha seleccionado menos dias) o f es igual que g (mínimo número de visitas a la tienda), por lo que tendría el mismo tamaño que $L_{op}$.\\
+Por lo que alcanzamos una contradiccion, ya que $r$  no seria el maximo valor donde $L$ y $L_{op}$ siguen siendo iguales.
+
+
+
 \section{Pseudocódigo}
 
-
+\begin{verbatim}
+Aquí va el pseudocódigo
+\end{verbatim}
 
 \end{document}
