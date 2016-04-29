@@ -80,18 +80,67 @@ La solución devolverá una lista, con los dias en los que el granjero irá a  l
 Vamos a demostrar que encuentra siempre la solución óptima por una reducción al absurdo:\\
 
 Sea $ L = g_0 < g_1 < ... < g_p $ el conjunto de días seleccionados por el algoritmo Greedy que \textbf{NO} es óptimo.\\
-Sea $ L_{op} = f_0 < f_1 < ... < f_p $ una de la soluciones optimas del problema.\\
-Sea $r$ el máximo valor posible hasta donde L y $L_{op}$ coinciden, es decir, $f_0=g:0, f_1=g_1,...,f_r = g_r$.\\
-Entonces, $g(r+1)$ será mayor que $f(r+1)$ (ya que hemos supuesto que es en r cuando dejan de ser iguales y donde se inclina la balanza a la solución optima).\\
-Por lo que $g_0 < ... < g_r < g(r+1) < f(r+2) < f_q $ es otra solucion al problema ya que  hemos llegado al final sin agotar el abono. Y ya que nuestro criterio para seleccionar es el día más lejano. Si f llega un momento que se separa de g (g es la nuestra). Quiere decir que una de dos. O selecciona más días (lo que ya no puede ser óptimo ya que la nuestra ha seleccionado menos dias) o f es igual que g (mínimo número de visitas a la tienda), por lo que tendría el mismo tamaño que $L_{op}$.\\
-Por lo que alcanzamos una contradiccion, ya que $r$  no seria el maximo valor donde $L$ y $L_{op}$ siguen siendo iguales.
 
+Sea $ L_{op} = f_0 < f_1 < ... < f_p $ una de la soluciones óptimas del problema.\\
+
+Sea $r$ el máximo valor posible hasta donde L y $L_{op}$ coinciden, es decir, $f_0=g:0, f_1=g_1,...,f_r = g_r$.\\
+Entonces, $g(r+1) > f(r+1)$ \\
+Por lo que $g_0 < ... < g_r < g(r+1) < f(r+2) < f_q $ es otra solución al problema. 
+
+Si f llega un momento que se separa de g querrá decir que el número de días será mayor o igual.\\
+Por lo que alcanzamos una contradicción, ya que $r$  no sería el máximo valor donde $L$ y $L_{op}$ siguen siendo iguales.
 
 
 \section{Pseudocódigo}
 
-\begin{verbatim}
-Aquí va el pseudocódigo
-\end{verbatim}
+	Selección
+	
+	\begin{algorithmic}
+		\Require Conjunto de candidatos C
+		\State {x=0}
+		\For {i = 1 to len(C)}
+		\If{ c\_i - c\_dia\_actual menor que R }
+		\State{x = c\_i}
+		\EndIf
+		\EndFor  
+		
+		\Return x	
+	\end{algorithmic}	
+
+
+	
+	Factibilidad
+	\begin{algorithmic}
+		
+		\Require Candidato c
+		
+		\If{ c\_dia\_actual == c }
+		
+		\Return False
+		\Else 
+		
+		\Return True 	   	
+		\EndIf
+			
+		
+	\end{algorithmic}
+	
+	\newpage
+	Problema completo
+
+	\begin{algorithmic}
+		\Require Conjunto de candidatos C
+		
+		\State{S = 0}
+		
+		\While {S no sea una solución y C != 0 }
+		\State{x = seleccion (C) }
+		\State{C = C - {x}}
+		\If{factible({x})}
+		\State{S = S + {x}}
+		\EndIf
+		\EndWhile
+	\end{algorithmic}	
+	
 
 \end{document}

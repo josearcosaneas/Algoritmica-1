@@ -1,9 +1,9 @@
-f(x) = a0*x*x*x
-fit f(x) "Miguesalidabrutabuena.dat" via a0 
+f(x) = a0*x*log(x)
+fit f(x) "Miguesalidadyv.dat" via a0 
 set encoding utf8
 set terminal png size 1024,768
 set title 'Fuerza bruta -Ef.Hibrida'
-set output 'fuerzabruta-hibrida.png'
+set output 'divideyvenseras-hibrida.png'
 set xlabel 'Tamaño'
 set ylabel 'Tiempo'
-plot 'Miguesalidabrutabuena.dat', f(x) title 'Fuerza bruta - Hibrida'
+plot 'Miguesalidadyv.dat', f(x) title 'Fuerza bruta - Hibrida'
