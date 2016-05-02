@@ -4,4 +4,10 @@
 \beamer@sectionintoc {2}{Primera versi\IeC {\'o}n}{4}{0}{2}
 \beamer@sectionintoc {3}{Dise\IeC {\~n}o del algoritmo}{5}{0}{3}
 \beamer@sectionintoc {4}{Pseudocodigo}{6}{0}{4}
-\beamer@sectionintoc {5}{Demostraci\IeC {\'o}n}{9}{0}{5}
+\beamer@sectionintoc {5}{Segunda versi\IeC {\'o}n}{7}{0}{5}
+\beamer@sectionintoc {6}{Dise\IeC {\~n}o del algoritmo}{8}{0}{6}
+\beamer@sectionintoc {7}{Pseudoc\IeC {\'o}digo}{9}{0}{7}
+\beamer@sectionintoc {8}{Tercera versi\IeC {\'o}n}{10}{0}{8}
+\beamer@sectionintoc {9}{Dise\IeC {\~n}o del algoritmo}{11}{0}{9}
+\beamer@sectionintoc {10}{Pseudoc\IeC {\'o}digo}{12}{0}{10}
+\beamer@sectionintoc {11}{Comparaci\IeC {\'o}n}{13}{0}{11}

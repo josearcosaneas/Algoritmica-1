@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Arch Linux) (preloaded format=pdflatex 2016.3.12)  29 APR 2016 12:51
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Arch Linux) (preloaded format=pdflatex 2016.1.4)  2 MAY 2016 14:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1184,15 +1184,25 @@ LaTeX Info: Redefining \% on input line 2.
 
 ] [8
 
+] [9
+
+] [10
+
+] [11
+
+] [12
+
 ]
-LaTeX Font Info:    Try loading font information for U+msa on input line 222.
- (/usr/share/texmf-dist/tex/latex/amsfonts/umsa.fd
+LaTeX Font Info:    Try loading font information for U+msa on input line 289.
+
+(/usr/share/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 222.
+LaTeX Font Info:    Try loading font information for U+msb on input line 289.
+
 (/usr/share/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [9
+) [13
 
 ]
 \tf@nav=\write6
@@ -1204,46 +1214,39 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 \tf@snm=\write8
 \openout8 = `presentation_3-1.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 225.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 225.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 294.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 294.
  (./presentation_3-1.aux
 LaTeX Info: Redefining \. on input line 25.
 LaTeX Info: Redefining \% on input line 25.
 )
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 225.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 225.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 294.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 294.
+Package rerunfilecheck Info: File `presentation_3-1.out' has not changed.
+(rerunfilecheck)             Checksum: F92424D2AFA37A38D8C1735F9786F3B9;584.
 
-Package rerunfilecheck Warning: File `presentation_3-1.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `presentation_3-1.out':
-(rerunfilecheck)             Before: 053501E717CAD68081D36C35806105D2;250
-(rerunfilecheck)             After:  B68FB940791E718175AD0437165C8A4E;259.
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 1.0pt have occurred.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 225.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 294.
  ) 
 Here is how much of TeX's memory you used:
- 18241 strings out of 493054
- 339066 string characters out of 6140586
- 425059 words of memory out of 5000000
- 21311 multiletter control sequences out of 15000+600000
+ 18269 strings out of 493054
+ 339117 string characters out of 6140587
+ 430060 words of memory out of 5000000
+ 21325 multiletter control sequences out of 15000+600000
  10858 words of font info for 40 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  48i,16n,60p,423b,835s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmss12.pfb></usr/share/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmss8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mssbx10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb><
-/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb>
-Output written on presentation_3-1.pdf (9 pages, 90003 bytes).
+</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/share/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmss8.pfb></usr/share/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmssbx10.pfb>
+Output written on presentation_3-1.pdf (13 pages, 80437 bytes).
 PDF statistics:
- 370 PDF objects out of 1000 (max. 8388607)
- 337 compressed objects within 4 object streams
- 24 named destinations out of 1000 (max. 500000)
- 113 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 598 PDF objects out of 1000 (max. 8388607)
+ 562 compressed objects within 6 object streams
+ 38 named destinations out of 1000 (max. 500000)
+ 161 words of extra memory for PDF output out of 10000 (max. 10000000)
 

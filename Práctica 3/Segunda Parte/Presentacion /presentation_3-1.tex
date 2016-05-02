@@ -17,7 +17,7 @@
 
 \documentclass{beamer}
 \usepackage[spanish]{babel}
- \usepackage{algpseudocode}
+\usepackage{algpseudocode}
 \usepackage[utf8]{inputenc}
 \mode<presentation> {
 
@@ -189,27 +189,104 @@ Universidad de Granada \\ % Your institution for the title page
 	
 \end{frame}
 
-\section{Pseudocodigo}
+\section{Pseudocódigo}
 \begin{frame}
 	\frametitle{Pseudocódigo I}
-	Selección
+			\begin{algorithmic}				
+						\Require Conjunto de ciudades C,S
+						\State {x=0}
+						\State {S=CalcularRecorridoInicial()}
+						\For {i=0 to len(C)}
+							\State{x = C[i]}
+							\For{ j=0 to len(S)}
+							\State{x = C[i]}
+							\State{MejorPosicion(S[j],x)}
+							\State{C[i].erase}
+							\EndFor
+						\EndFor  
+						
+						\Return S	
+						
+				
+					
+			\end{algorithmic}
+
 	
-	\begin{algorithmic}
-		\Require Conjunto de ciudades C,S
-		\State {x=0}
-		\State {S=CalcularRecorridoInicial()}
+\end{frame}
+
+
+\section{Tercera versión} 
+\begin{frame}
+	\frametitle{Tercera versión}
+	Implementación del algoritmo Greedy 2-Opt. Calcularemos una primera aproximación de la solución utilizando el algoritmo de la primera versión. Después, iremos para cada ciudad intercambiando con las siguientes, viendo si alguno de esos intercambios mejora la primera solución obtenida, así hasta intentar generar una solución mejor que la primera
+\end{frame}
+
+%------------------------------------------------
+\section{Diseño del algoritmo} 
+\begin{frame}
+	\frametitle{Diseño del algoritmo}
+	\begin{itemize}
+		\item \textbf{Conjunto de candidatos}: Conjunto de ciudades. (Conjunto \textbf{C})
+		\item \textbf{Conjunto de seleccionados}: Conjunto de ciudades ordenado. (Conjunto \textbf{S})
+		\item \textbf{Función solución}: Cuando el conjunto de candidatos esté vacío.
+		\item \textbf{Función factibilidad:} En principio no hay función de factibilidad.
+		\item \textbf{Función selección}: Dada la solución con la primera versión del algoritmo, comprobaremos si intercambiando una por una las ciudades se mejora la solución inicial .
+		\item \textbf{Función objetivo}: Lista con las ciudades en el orden en el que hay que visitarlas.		
+	\end{itemize}
+	
+\end{frame}
+
+\section{Pseudocódigo}
+\begin{frame}
+	\frametitle{Pseudocódigo I}
+	\begin{algorithmic}				
+		\Require Conjunto de ciudades C,S,AUX
 		
-		\For {i=0 to len(C)}
-			\State{x = C[i]}
-			\For{ j=0 to len(S)}
-				\State{x = C[i]}
-				\State{MejorPosicion(S[j],x)}
-				\State{C[i].erase}
+		\State S=PrimeraVersión();
+		\State AUX=S;
+		\State {x=0;}
+		\For {i=0 to len(S)}
+		\State{x = C[i];}
+		\For{ j=0 to len(S)}
+		\State{y = C[j];}
+		\State{AUX[i] = y;}
+		\State{AUX[j] = x;}
+		\If{AUX < S }
+			S = AUX;
 		\EndIf
+	
+		\EndFor
 		\EndFor  
 		
 		\Return S	
-	\end{algorithmic}	
+		
+		
+		
+	\end{algorithmic}
+	
+	
+\end{frame}
+
+\section{Comparación}
+\begin{frame}
+	\frametitle{Comparación}
+	En esta sección veremos los distintos resultados obtenidos de cada una de las ejecuciones de los algoritmos.
+	
+	\begin{table}[H]
+		\centering
+	
+		
+		\begin{tabular}{l|l|l|l|l}
+		  Mapa	& Versión I & Versión II & Versión III  & Versión óptima  \\
+		Berlín52	&  8314.81  &9622.17  & 7883.92 & 7542  \\
+		Ch130	& 7022.12   & 7499.39  & 6738.84 & 6110  \\
+		Gr666	&  3903.52  & 3792.73 & 3656.94 & 294358 \\
+		Ulysses16	& 79.0141
+		  & 81.1402  & 74.4295 & 6859
+		\end{tabular}
+	
+	\end{table}
+	
 \end{frame}
 
 
