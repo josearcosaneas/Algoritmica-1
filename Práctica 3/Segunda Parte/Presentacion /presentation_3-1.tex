@@ -116,7 +116,7 @@ Universidad de Granada \\ % Your institution for the title page
 \begin{frame}
 	\frametitle{Introducción}
 	\begin{itemize}
-		\item El objetivo de esta práctica es diseñar varios algoritmo Greedy resolviendo el problema del viajante de comercio o TSP
+		\item El objetivo de esta práctica es diseñar varios algoritmos Greedy resolviendo el problema del viajante de comercio o TSP
 	\end{itemize}
 \end{frame}
 
@@ -138,8 +138,8 @@ Universidad de Granada \\ % Your institution for the title page
 		\item \textbf{Conjunto de candidatos}: Conjunto de ciudades. (Conjunto \textbf{C})
 		\item \textbf{Conjunto de seleccionados}: Conjunto de ciudades ordenado. (Conjunto \textbf{S})
 		\item \textbf{Función solución}: Cuando el conjunto de candidatos esté vacío.
-		\item \textbf{Función factibilidad:} En principio no hay función de factibilidad.
-		\item \textbf{Función selección}: Se seleccionará el día más cercano no visitado.
+		\item \textbf{Función factibilidad:} Cuando la ciudad no ha sido visitada.
+		\item \textbf{Función selección}: Se seleccionará la ciudad más cercana.
 		\item \textbf{Función objetivo}: Lista con las ciudades en el orden en el que hay que visitarlas.		
 	\end{itemize}
 	
@@ -171,7 +171,7 @@ Universidad de Granada \\ % Your institution for the title page
 \section{Segunda versión} 
 \begin{frame}
 	\frametitle{Segunda versión}
-	Aplicar algoritmo usando Greedy con selección parcial, estableceremos un recorrido inicial seleccionando las 3 ciudades más alejadas (oeste,norte y este). A partir de ahí añadiremos las ciudades con respecto a los intervalos creados.
+	Aplicar algoritmo usando Greedy con selección parcial, estableceremos un recorrido inicial seleccionando las 3 ciudades más alejadas (oeste, norte y este). A partir de ahí añadiremos las ciudades con respecto a los intervalos creados.
 	
 \end{frame}
 
@@ -183,8 +183,8 @@ Universidad de Granada \\ % Your institution for the title page
 		\item \textbf{Conjunto de candidatos}: Conjunto de ciudades. (Conjunto \textbf{C})
 		\item \textbf{Conjunto de seleccionados}: Conjunto de ciudades ordenado. (Conjunto \textbf{S})
 		\item \textbf{Función solución}: Cuando el conjunto de candidatos esté vacío.
-		\item \textbf{Función factibilidad:} En principio no hay función de factibilidad.
-		\item \textbf{Función selección}: Se seleccionará una ciudad y comprobaremos para cada una de las posiciones del circuito solución mitocondria el mejor lugar para insertarlo (la que ofrece menor distancia) .
+		\item \textbf{Función factibilidad:} Cuando la ciudad no ha sido visitada.
+		\item \textbf{Función selección}: Se seleccionará una ciudad y comprobaremos para cada una de las posiciones del circuito solución el mejor lugar para insertarlo (la que ofrece menor distancia) .
 		\item \textbf{Función objetivo}: Lista con las ciudades en el orden en el que hay que visitarlas.		
 	\end{itemize}
 	
@@ -230,8 +230,8 @@ Universidad de Granada \\ % Your institution for the title page
 		\item \textbf{Conjunto de candidatos}: Conjunto de ciudades. (Conjunto \textbf{C})
 		\item \textbf{Conjunto de seleccionados}: Conjunto de ciudades ordenado. (Conjunto \textbf{S})
 		\item \textbf{Función solución}: Cuando el conjunto de candidatos esté vacío.
-		\item \textbf{Función factibilidad:} En principio no hay función de factibilidad.
-		\item \textbf{Función selección}: Dada la solución con la primera versión del algoritmo, comprobaremos si intercambiando una por una las ciudades se mejora la solución inicial .
+		\item \textbf{Función factibilidad:} Cuando la ciudad no ha sido visitada.
+		\item \textbf{Función selección}: Dada la solución con la primera versión del algoritmo, comprobaremos si intercambiando una por una las ciudades se mejora la solución inicial.
 		\item \textbf{Función objetivo}: Lista con las ciudades en el orden en el que hay que visitarlas.		
 	\end{itemize}
 	
@@ -249,10 +249,10 @@ Universidad de Granada \\ % Your institution for the title page
 			\If {\textbf{Zp} mayor o igual que \textbf{z} and \textbf{j} menor que \textbf{tam-1}}
 				\State j++;
 			\EndIf
-			\If{\textbf{zp} mayor o igual que \textbf{z} and \textbf{j }== \textbf{tam - 1}}
+			\If{\textbf{Zp} mayor o igual que \textbf{z} and \textbf{j }== \textbf{tam - 1}}
 				\State j += 1; i += 1
 			\EndIf
-			\If {\textbf{zp }menor que \textbf{z}}
+			\If {\textbf{Zp }menor que \textbf{z}}
 				\State S = Sp; Z = Zp;
 				\State i += i; j = i + 1;
 			\EndIf
@@ -277,12 +277,13 @@ Universidad de Granada \\ % Your institution for the title page
 	
 		
 		\begin{tabular}{l|l|l|l|l}
-		  Mapa	& Versión I & Versión II & Versión III  & Versión óptima  \\
-		Berlín52	&  8314.81  &9622.17  & 7883.92 & 7542  \\
-		Ch130	& 7022.12   & 7499.39  & 6738.84 & 6110  \\
-		Gr666
-			& 25345.7
-		  & 27646.1  & 24163.5 & 21282 \\
+			Mapa & Versión I & Versión II & Versión III  & Versión óptima  \\
+			ulysses16 & 79.0141 & 81.1402 & 74.4295 & - \\
+			berlin52 & 8314.81 & 9622.17 & 7883.92 & 7542  \\
+			ch130 & 7022.12 & 7499.39 & 6738.84 & 6110 \\
+			lin105 & 17173.4 & 19159.3 & 16139.2 & 14379 \\
+			kroa100	& 25345.7 & 27646.1 & 24163.5 & 21282 \\
+			pcb442 & 61536.8 & 61217.7 & 59520.4 & 50778 \\
 		\end{tabular}
 	
 	\end{table}
