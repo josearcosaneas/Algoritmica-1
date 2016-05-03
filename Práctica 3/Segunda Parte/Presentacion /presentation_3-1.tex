@@ -85,7 +85,8 @@
 %	TITLE PAGE
 %----------------------------------------------------------------------------------------
 
-\title[Practica 3]{Minimizando el número de visitas al proveedor} % The short title appears at the bottom of every slide, the full title is only on the title page
+\title[Practica 3]{Greddy:\\
+Travelling salesman problem} % The short title appears at the bottom of every slide, the full title is only on the title page
 
 \author{Algorítmica} % Your name
 \institute[UGR] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
@@ -241,22 +242,21 @@ Universidad de Granada \\ % Your institution for the title page
 	\frametitle{Pseudocódigo I}
 	\begin{algorithmic}				
 		\Require Conjunto de ciudades C,S,AUX
-		
-		\State S=PrimeraVersión();
-		\State AUX=S;
-		\State {x=0;}
-		\For {i=0 to len(S)}
-		\State{x = C[i];}
-		\For{ j=0 to len(S)}
-		\State{y = C[j];}
-		\State{AUX[i] = y;}
-		\State{AUX[j] = x;}
-		\If{AUX < S }
-			S = AUX;
-		\EndIf
-	
-		\EndFor
-		\EndFor  
+		\State S=PrimeraVersión();Z=Distancia(S);
+		\State {x,y,i = 0; j = 1;}
+		\While {\textbf{i} menor o igual \textbf{tam -2} and\textbf{ j} menor o igual a \textbf{tam - 1}}
+			\State Sp=Swap(S,i,j);Zp=Distancia(Sp);
+			\If {\textbf{Zp} mayor o igual que \textbf{z} and \textbf{j} menor que \textbf{tam-1}}
+				\State j++;
+			\EndIf
+			\If{\textbf{zp} mayor o igual que \textbf{z} and \textbf{j }== \textbf{tam - 1}}
+				\State j += 1; i += 1
+			\EndIf
+			\If {\textbf{zp }menor que \textbf{z}}
+				\State S = Sp; Z = Zp;
+				\State i += i; j = i + 1;
+			\EndIf
+		\EndWhile  
 		
 		\Return S	
 		
