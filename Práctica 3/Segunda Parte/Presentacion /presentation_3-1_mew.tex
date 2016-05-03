@@ -85,8 +85,7 @@
 %	TITLE PAGE
 %----------------------------------------------------------------------------------------
 
-\title[Practica 3]{Greedy:\\
-Travelling Salesman Problem} % The short title appears at the bottom of every slide, the full title is only on the title page
+\title[Practica 3]{Minimizando el número de visitas al proveedor} % The short title appears at the bottom of every slide, the full title is only on the title page
 
 \author{Algorítmica} % Your name
 \institute[UGR] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
@@ -131,7 +130,7 @@ Universidad de Granada \\ % Your institution for the title page
 \end{frame}
 
 %------------------------------------------------
-\subsection{Diseño del algoritmo} 
+\section{Diseño del algoritmo} 
 \begin{frame}
 	\frametitle{Diseño del algoritmo}
 	\begin{itemize}
@@ -145,7 +144,7 @@ Universidad de Granada \\ % Your institution for the title page
 	
 \end{frame}
 
-\subsection{Pseudocodigo}
+\section{Pseudocodigo}
 \begin{frame}
 	\frametitle{Pseudocódigo I}
 	Selección
@@ -176,7 +175,7 @@ Universidad de Granada \\ % Your institution for the title page
 \end{frame}
 
 %------------------------------------------------
-\subsection{Diseño del algoritmo} 
+\section{Diseño del algoritmo} 
 \begin{frame}
 	\frametitle{Diseño del algoritmo}
 	\begin{itemize}
@@ -190,7 +189,7 @@ Universidad de Granada \\ % Your institution for the title page
 	
 \end{frame}
 
-\subsection{Pseudocódigo}
+\section{Pseudocódigo}
 \begin{frame}
 	\frametitle{Pseudocódigo I}
 			\begin{algorithmic}				
@@ -223,7 +222,7 @@ Universidad de Granada \\ % Your institution for the title page
 \end{frame}
 
 %------------------------------------------------
-\subsection{Diseño del algoritmo} 
+\section{Diseño del algoritmo} 
 \begin{frame}
 	\frametitle{Diseño del algoritmo}
 	\begin{itemize}
@@ -237,26 +236,27 @@ Universidad de Granada \\ % Your institution for the title page
 	
 \end{frame}
 
-\subsection{Pseudocódigo}
+\section{Pseudocódigo}
 \begin{frame}
 	\frametitle{Pseudocódigo I}
 	\begin{algorithmic}				
 		\Require Conjunto de ciudades C,S,AUX
-		\State S=PrimeraVersión();Z=Distancia(S);
-		\State {x,y,i = 0; j = 1;}
-		\While {\textbf{i} menor o igual \textbf{tam -2} and\textbf{ j} menor o igual a \textbf{tam - 1}}
-			\State Sp=Swap(S,i,j);Zp=Distancia(Sp);
-			\If {\textbf{Zp} mayor o igual que \textbf{z} and \textbf{j} menor que \textbf{tam-1}}
-				\State j++;
-			\EndIf
-			\If{\textbf{zp} mayor o igual que \textbf{z} and \textbf{j }== \textbf{tam - 1}}
-				\State j += 1; i += 1
-			\EndIf
-			\If {\textbf{zp }menor que \textbf{z}}
-				\State S = Sp; Z = Zp;
-				\State i += i; j = i + 1;
-			\EndIf
-		\EndWhile  
+		
+		\State S=PrimeraVersión();
+		\State AUX=S;
+		\State {x=0;}
+		\For {i=0 to len(S)}
+		\State{x = C[i];}
+		\For{ j=0 to len(S)}
+		\State{y = C[j];}
+		\State{AUX[i] = y;}
+		\State{AUX[j] = x;}
+		\If{AUX < S }
+			S = AUX;
+		\EndIf
+	
+		\EndFor
+		\EndFor  
 		
 		\Return S	
 		
@@ -269,7 +269,7 @@ Universidad de Granada \\ % Your institution for the title page
 
 \section{Comparación}
 \begin{frame}
-	\frametitle{Comparación recorridos}
+	\frametitle{Comparación}
 	En esta sección veremos los distintos resultados obtenidos de cada una de las ejecuciones de los algoritmos.
 	
 	\begin{table}[H]
@@ -280,58 +280,12 @@ Universidad de Granada \\ % Your institution for the title page
 		  Mapa	& Versión I & Versión II & Versión III  & Versión óptima  \\
 		Berlín52	&  8314.81  &9622.17  & 7883.92 & 7542  \\
 		Ch130	& 7022.12   & 7499.39  & 6738.84 & 6110  \\
-		Gr666
-			& 25345.7
-		  & 27646.1  & 24163.5 & 21282 \\
+ 
 		\end{tabular}
 	
 	\end{table}
 	
 \end{frame}
-
-
-\begin{frame}
-	\frametitle{Comparación gráficas}
-	En esta sección veremos los distintos grafos obtenidos de cada uno de los algoritmos para el mapa Berlin52
-	
-	\begin{figure}
-\centering
-\includegraphics[width=0.7\linewidth]{../grafica/grafica1.png}
-\caption{Primera versión}
-\label{fig:graficafinal}
-\end{figure}
-	
-\end{frame}
-\begin{frame}
-	\frametitle{Comparación gráficas}
-	En esta sección veremos los distintos grafos obtenidos de cada uno de los algoritmos para el mapa Berlin52
-	
-	\begin{figure}
-		\centering
-		\includegraphics[width=0.7\linewidth]{../grafica/grafica2.png}
-		\caption{Segunda versión}
-		\label{fig:graficafinal}
-	\end{figure}
-	
-	
-	
-\end{frame}
-\begin{frame}
-	\frametitle{Comparación gráficas}
-	En esta sección veremos los distintos grafos obtenidos de cada uno de los algoritmos para el mapa Berlin52
-	
-	\begin{figure}
-		\centering
-		\includegraphics[width=0.7\linewidth]{../grafica/grafica3.png}
-		\caption{Tercera versión}
-		\label{fig:graficafinal}
-	\end{figure}
-	
-	
-	
-\end{frame}
-
-
 
 
 
