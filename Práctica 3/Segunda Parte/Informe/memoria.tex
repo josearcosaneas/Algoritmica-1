@@ -106,24 +106,29 @@
 	
 	
 	\subsection{Pseudocódigo}
-			\begin{algorithmic}				
-			\Require Conjunto de ciudades C,S
-			\State {x=0}
-			\State {S=CalcularRecorridoInicial()}
-			\For {i=0 to len(C)}
-			\State{x = C[i]}
-			\For{ j=0 to len(S)}
-			\State{x = C[i]}
-			\State{MejorPosicion(S[j],x)}
-			\State{C[i].erase}
-			\EndFor
-			\EndFor  
 			
-			\Return S	
-			
-			
-		\end{algorithmic}
 		
+		\begin{algorithmic}				
+			\Require Conjunto de ciudades C,S
+			\State {x=0; S=CalcularRecorridoInicial();}
+			\While {C}
+				\For {i=0 to len(C)}
+					\State{x = C[i];}
+					\For{ j=1 to len(S-1)}
+						\State {Saux = S; Saux[j] = x;}
+						\If {distanciaSaux menor que minDistancia}
+							\State {minDistancia = distanciaSaux;}
+							\State {indiceSolucion = j; indiceCiudad = i;}
+						\EndIf
+					\EndFor
+				\EndFor 
+				\State{S[indiceSolucion] = x; C[indiceCiudad].erase;}
+			\EndWhile 
+			
+			\Return S
+		
+		\end{algorithmic}
+
 	
 	\section{Tercera versión} 
 	
