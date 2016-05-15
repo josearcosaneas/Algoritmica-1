@@ -1,0 +1,104 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Beamer Presentation
+% LaTeX Template
+% Version 1.0 (10/11/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND THEMES
+%---------------------------------------------------------------------------------------
+
+\documentclass{beamer}
+\usepackage[spanish]{babel}
+ \usepackage{algpseudocode}
+\usepackage[utf8]{inputenc}
+\mode<presentation> {
+
+
+\usetheme{PaloAlto}
+
+}
+
+\usepackage{graphicx} % Allows including images
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\title[Practica 4]{Cena de gala} % The short title appears at the bottom of every slide, the full title is only on the title page
+
+\author{Algorítmica} % Your name
+\institute[UGR] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
+{
+Universidad de Granada \\ % Your institution for the title page
+\medskip
+
+}
+\date{\today} % Date, can be changed to a custom date
+
+\begin{document}
+
+\begin{frame}
+\titlepage % Print the title page as the first slide
+\end{frame}
+
+\begin{frame}
+\frametitle{Índice} % Table of contents slide, comment this block out to remove it
+\tableofcontents % Throughout your presentation, if you choose to use \section{} and \subsection{} commands, these will automatically be printed on this slide as an overview of your presentation
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+%	PRESENTATION SLIDES
+%----------------------------------------------------------------------------------------
+
+\section{Introducción }
+\begin{frame}
+	\frametitle{Introducción}
+	\begin{itemize}
+		\item El objetivo de esta práctica es diseñar un algoritmo Bactraking, que resuelva uno de los cinco problemas de la práctica y realizar un estudio empírico de su eficiencia.
+	\end{itemize}
+\end{frame}
+
+
+%------------------------------------------------
+\section{Ejercicio} 
+\begin{frame}
+	\frametitle{Enunciado del ejercicio}
+	Se desea sentar a N invitados alrededor de una mesa, de manera que cada invitado tendra a su lado a otros dos. Cada par de invitados tiene un nivel de compatibilidad. Se desea maximizar la compatibilidad de estos comensales.
+	
+\end{frame}
+
+%------------------------------------------------
+\section{Diseño del algoritmo} 
+\begin{frame}
+	\frametitle{Diseño del algoritmo}
+	\begin{itemize}
+		\item \textbf{Solución parcial}: Solucion parcial al problema de tamaño menor que N. (Conjunto \textbf{Sp})
+		\item \textbf{Funcion de poda}: No se me ocurre nada.
+		\item \textbf{Restricciones explícitas}: Los valores que puede tomar la solucion son los enteros de 1 a N. Donde N es el número total de invitados.  
+		\item \textbf{Restricciones implícitas}: Estas restricciones son las que determinan si una función parcial puede llevarnos a una solucion del problema. Si supera un umbral.  
+	\end{itemize}
+	
+\end{frame}
+
+\section{Pseudocodigo}
+\begin{frame}
+
+	
+\end{frame}
+
+
+
+
+
+
+
+\end{document} 
