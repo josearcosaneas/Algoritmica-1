@@ -1,0 +1,85 @@
+\input{preambuloSimple.tex}
+ \usepackage{algpseudocode}
+%----------------------------------------------------------------------------------------
+%	TÍTULO Y DATOS DEL ALUMNO
+%----------------------------------------------------------------------------------------
+
+\title{	
+\normalfont \normalsize 
+\textsc{{\bf Algorítmica (2015-2016)} \\ Grado en Ingeniería Informática \\ Universidad de Granada} \\ [25pt] % Your university, school and/or department name(s)
+\horrule{0.5pt} \\[0.4cm] % Thin top horizontal rule
+\huge Práctica 4-Primera Parte: Cena de gala \\ % The assignment title
+\horrule{2pt} \\[0.5cm] % Thick bottom horizontal rule
+}
+
+\author{Francisco Carrillo Pérez,Borja Cañavate Bordons, \\Miguel Porcel Jiménez,Jose Manuel Rejón Santiago,Jose Arcos Aneas} % Nombre y apellidos
+
+\date{\normalsize\today} % Incluye la fecha actual
+
+%----------------------------------------------------------------------------------------
+% DOCUMENTO
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\maketitle % Muestra el Título
+
+\newpage %inserta un salto de página
+
+\tableofcontents % para generar el índice de contenidos
+
+\listoffigures
+
+\listoftables
+
+\newpage
+
+\section{Introducción }
+
+	El objetivo de esta práctica es diseñar un algoritmo Bactraking, que resuelva uno de los cinco problemas de la práctica y realizar un estudio empírico de su eficiencia.
+	
+	Se desea sentar a N invitados alrededor de una mesa, de manera que cada invitado tendra a su lado a otros dos. Cada par de invitados tiene un nivel de compatibilidad. Se desea maximizar la compatibilidad de estos comensales.
+%----------------------------------------------------------------------------------------
+\section{Resolución del problema}
+
+Se elige un elemento como el raiz.
+Se mete en el vector de solución y se elimina de los posibles candidatos.
+Se generan todos los posibles hijos, estos serán todos los que no se hayan incluido ya en el vector solución.
+Si la longitud de nuestra solución igual al numero de comensales es solución.\\
+
+
+Backtracking(A[], k)\\
+		Si Es\_Solucion(A[], k)\\
+			Entonces Procesar\_Solucion(A[], k)\\
+		SinoPor cada Encontrar\_Sucesores(A[], k) hacer\\
+			Backtracking(A[], k+1)\\
+	
+
+%------------------------------------------------------------------------------------------
+
+\section{Elementos de la solución al problema}
+
+\subsection{Representación de la compatibilidad}
+La entrada sera una matriz simetrica de valores aleatorios con la diagonal de 0s.
+
+\subsection{Representación de la solución}
+Vector de longitud igual al número de invitados (\textit{N}), en que cada posición guarda el valor del invitado que se sienta en la posición \textit{i}.
+
+\subsection{Solucion parcial}
+olucion parcial al problema de tamaño menor que N.
+
+\subsection{Función de poda}
+No se me ocurre nada.
+
+\subsection{Restricciones explícitas}
+Los valores que puede tomar la solucion son los enteros de 1 a N. Donde N es el número total de invitados. 
+
+\subsection{Restricciones implícitas}
+Estas restricciones son las que determinan si una función parcial puede llevarnos a una solucion del problema. Si supera un umbral. 
+
+%--------------------------------------------------------------------------------------------
+
+\section{Pseudocódigo}
+
+
+\end{document}
