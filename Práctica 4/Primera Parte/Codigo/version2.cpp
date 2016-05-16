@@ -26,16 +26,14 @@ int **generarEntrada(int n){
 
 	for (int i = 0; i < n ;i++){
 		for (int j = i; j < n; j++){
-			int num = 1 + ( rand() % (100) );
-			matriz[i][j] = num;
-			matriz[j][i] = num;
+			if (i==j) 
+				matriz[i][j] = 0;
+			else{
+				int num = 1 + ( rand() % (100) );
+				matriz[i][j] = num;
+				matriz[j][i] = num;
+			}
 		}
-	}
-	for (int i = 0; i < n ; i++){
-		for (int j = 0; j < n; j++){
-		 	if (i==j) matriz[i][j] = 0;		
-		}
-
 	}
 	
 	return matriz;
@@ -66,90 +64,63 @@ int calcularCompatibilidad(int n, vector<int> p, int **matriz){
 }
 
 //Función fuerza bruta para calcular un valor greedy
-void calcularSolucionParcial(int n, vector<int> &solucion, vector<int> &comensales_disponibles, int **matriz){
-
-	vector<int> posiciones;
-
-	//Añadimos todos los comensales
-	for(int i = 0; i < n; i++){
-		posiciones.push_back(i);
-	}
-
-	//Borramos aquellos que ya están en la solución parcial
-	for(int i = 0; i < solucion.size(); i++){
-		posiciones.erase(posiciones.begin() + solucion[i]);
-	}
-
-	comensales_disponibles = posiciones;
+int calcularSolucionParcial(int n, vector<int> solucion_parcial, vector<bool> comensales_sentados, int **matriz, int nivel){
 	
 	int max = 0;
 	int comensal = 0, pos = 0;
+	comensales_sentados[0] = true;
 
-	//Mientras haya comensales que colocar
-	while(posiciones.size()){
+	while(solucion_parcial.size() < n ){
+		for (int i = 0; i < n; ++i){
+			if(comensales_sentados[i] == false){
+				if(matriz[solucion_parcial.back()][i] > max){
+					max = matriz[solucion_parcial.back()][i];
+					pos = i;
 
-		for(int j = 0; j < posiciones.size(); j++){
-			//Comprobamos el último comensal que se ha sentado con todos los posibles candidatos que nos quedan
-			if(matriz[solucion[solucion.size()-1]][posiciones[j]] > max){
-				max = matriz[solucion[solucion.size()-1]][posiciones[j]];
-				comensal = posiciones[j];
-				pos = j;
+				}
 			}
 		}
-
-		solucion.push_back(posiciones[pos]); //Añadimos el nuevo comensal a la solución
-		posiciones.erase(posiciones.begin() + pos); //Eliminamos el comensal que se ha sentado de los posibles candidatos
+		solucion_parcial.push_back(pos);
+		comensales_sentados[pos] = true;
 		max = 0;
 	}
 
+	if(nivel == 1)
+		return calcularCompatibilidad(n, solucion_parcial, matriz);
+	else
+		return (calcularCompatibilidad(n, solucion_parcial, matriz)+matriz[0][n-1]); //Cota optimista
+
 }
 
-//Encontramos el nodo que nos da más valor inicial
-int encontrarNodoInicial(int n, int **matriz){
+void backtracking(int n, int nivel, int comensal, int &suma, vector<bool> &comensales_sentados, int **matriz, vector<int> &solucion, int &cota_global){
 
-	int maximo = 0, pos_i = 0;
+	comensales_sentados[comensal] = true;
+	solucion.push_back(comensal);
+	int cota_local = calcularSolucionParcial(n, solucion, comensales_sentados, matriz, nivel+1);
 
-	for (int i = 0; i < n; i++){
-		for (int j = i + 1; j < n ;j++){
-			if(matriz[i][j] > maximo){
-				maximo = matriz[i][j];
-				pos_i = i;
+	for(int siguiente_comensal = 0; siguiente_comensal < n; siguiente_comensal++){
+		if(comensales_sentados[siguiente_comensal] == false){
+			//suma = calcularCompatibilidad(solucion.size(), solucion, matriz);
+			suma = suma + matriz[comensal][siguiente_comensal];
+			if(cota_local > cota_global) //Si vamos por buen camino, descendemos
+				backtracking(n, nivel + 1, siguiente_comensal, suma, comensales_sentados, matriz, solucion, cota_global);
+			if(nivel == (n - 1) ){ //Si estamos en el nodo hoja, calculamos la nueva cota
+				//suma = calcularCompatibilidad(solucion.size(), solucion, matriz);
+				suma = suma + matriz[siguiente_comensal][0];
+				cota_local = calcularSolucionParcial(n, solucion, comensales_sentados, matriz, nivel+1);
+				if(cota_local > cota_global){
+					cota_global = cota_local;
+				}
 			}
+			else{
+				suma = suma - matriz[comensal][siguiente_comensal];
+			}
+			comensales_sentados[siguiente_comensal] = false;
 		}
 	}
-
-	return pos_i;
 }
 
-vector<int> backtracking(int n, vector<int> &solucion_parcial, vector<int> &comensales_disponibles, int **matriz, int cota, int nodo_a_explorar
-	vector<int> nodos_explorados){
-
-	vector<int> solucion_aux = solucion_parcial;
-
-	calcularSolucionParcial(n, solucion_aux, comensales_disponibles, matriz);
-	int cota_local = calcularCompatibilidad(n, solucion_aux, matriz);
-
-	cout << "Cota global " << cota << " cota local " << cota_local << endl;
-	if(nodos_explorados.size() == n){
-		return solucion_parcial;
-	}
-
-	cout << "No podamoh, recortate un poco el albusto" << endl;
-	solucion_parcial.push_back(comensales_disponibles[0]);
-	comensales_disponibles.erase(comensales_disponibles.begin());
-
-	if(!comensales_disponibles.size()){
-		
-	}
-
-
-	backtracking(n, solucion_parcial, comensales_disponibles, matriz, cota);
-}
-
-
-// Este main era para comprobar si la matriz del apartado anterior es 
-// simetrica y con la diagonal de 0.
-int main(int argc, char *argv[]){
+int main(int argc, char const *argv[]){
 
 	if(argc < 2){
 		cerr << "Número de argumentos inválido. Pruebe con ./programa <número_comensales>" << endl;
@@ -157,23 +128,17 @@ int main(int argc, char *argv[]){
 	}
 
 	int n = atoi(argv[1]);
-	int **matriz, resultado = 0, nodo = 0, cota_global;
+	int suma = 0;
+	vector<bool> comensales_sentados(n, false);
 	vector<int> solucion;
-	vector<int> comensales_disponibles;
+	int **matriz = generarEntrada(n);
+	solucion.push_back(0);
+	int cota_global = calcularSolucionParcial(n, solucion, comensales_sentados, matriz, 1);
+	solucion.clear();
 
-	matriz = generarEntrada(n);
-	nodo = encontrarNodoInicial(n, matriz);
-	cout << "nodo encontrado" << endl;
-	//solucion_parcial = solucion;
-	solucion.push_back(nodo);
-	calcularSolucionParcial(n, solucion, comensales_disponibles, matriz);
-	cout << "solucion parcial" << endl;
-	cota_global = calcularCompatibilidad(n, solucion, matriz);
-	cout << "cota calculada" << endl;
-	solucion.clear(); //Borramos
-	
-	solucion.push_back(nodo);
-	solucion = backtracking(n, solucion, comensales_disponibles, matriz, cota_global);
+	cout << "Cota global = " << cota_global << endl;
+
+	backtracking(n, 1, 0, suma, comensales_sentados, matriz, solucion, cota_global);
 
 	cout << "Matriz inicial: " << endl;
 	for (int i = 0; i < n; i++){
@@ -183,19 +148,12 @@ int main(int argc, char *argv[]){
 		cout << endl;
 	}
 
-	cout << "Solución: " << endl;
+	cout << "Solución: " << solucion.size() << endl;
 
 	for(int i = 0; i < solucion.size(); i++)
 		cout << solucion[i] << " " ;
-	cout << endl;
 
-	resultado = calcularCompatibilidad(n, solucion, matriz);
-	
-	cout << resultado << endl;
+	cout << endl << "Suma = " << suma << endl;
 
-
+	return 0;
 }
-
-
-
-
