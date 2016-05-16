@@ -48,7 +48,7 @@ int **generarEntrada(int n){
  * @param int** matriz matriz simetrica que almacena la 
  * compatiblidad de los asistentes.
  *****************************************************/
-int calcularCompatibilidad(int n, vector<int> p, int **matriz){
+int calcularCompatibilidad(int n, int p[], int **matriz){
 
 	int valor = 0;
 	// sumamos la compatibilidad con el contiguo
@@ -64,25 +64,32 @@ int calcularCompatibilidad(int n, vector<int> p, int **matriz){
 }
 
 //Función fuerza bruta para calcular un valor greedy
-int calcularSolucionParcial(int n, vector<int> solucion_parcial, vector<bool> comensales_sentados, int **matriz, int nivel){
+int calcularSolucionParcial(int n, int solucion_parcial[], vector<bool> comensales_sentados, int **matriz, int nivel){
 	
 	int max = 0;
-	int comensal = 0, pos = 0;
+	int comensal = 0, pos = 0, num_elementos = 0, elemento_ultimo;
 	comensales_sentados[0] = true;
 
-	while(solucion_parcial.size() < n ){
+	for(int i = 0; i < n; i++)
+		if(solucion_parcial[i] != -1)
+			num_elementos++;
+
+	//elemento_ultimo = num_elementos;
+
+	while(num_elementos < n ){
 		for (int i = 0; i < n; ++i){
 			if(comensales_sentados[i] == false){
-				if(matriz[solucion_parcial.back()][i] > max){
-					max = matriz[solucion_parcial.back()][i];
+				if(matriz[solucion_parcial[num_elementos]][i] > max){
+					max = matriz[solucion_parcial[num_elementos]][i];
 					pos = i;
 
 				}
 			}
 		}
-		solucion_parcial.push_back(pos);
+		solucion_parcial[num_elementos] = pos;
 		comensales_sentados[pos] = true;
 		max = 0;
+		num_elementos++;
 	}
 
 	if(nivel == 1)
@@ -92,19 +99,11 @@ int calcularSolucionParcial(int n, vector<int> solucion_parcial, vector<bool> co
 
 }
 
-void backtracking(int n, int nivel, int comensal, int &suma, vector<bool> &comensales_sentados, int **matriz, vector<int> &solucion, int &cota_global){
+void backtracking(int n, int nivel, int comensal, int &suma, vector<bool> &comensales_sentados, int **matriz, int solucion[], int &cota_global){
 
 	comensales_sentados[comensal] = true;
 
-	if(solucion.size() < n)
-		solucion.push_back(comensal);
-	else{
-		int aux = comensal;
-		solucion[nivel]
-		solucion[nivel - 1] = aux;
-
-
-	}
+	solucion[nivel - 1] = comensal;
 	
 	int cota_local = calcularSolucionParcial(n, solucion, comensales_sentados, matriz, nivel+1);
 
@@ -139,16 +138,24 @@ int main(int argc, char const *argv[]){
 
 	int n = atoi(argv[1]);
 	int suma = 0;
+	cout << "c" ;
 	vector<bool> comensales_sentados(n, false);
-	vector<int> solucion;
-	int **matriz = generarEntrada(n);
-
-	solucion.push_back(0);
+	cout << "c" ;
+	int solucion[n];
+	cout << "c" ;
+	//int **matriz = generarEntrada(n);
+	cout << "c" ;
+	for(int i = 0; i < n; i++)
+		solucion[i] = -1;
+	cout << "a" ;
+	solucion[0] = 0;
+	cout << "a" ;
 	int cota_global = calcularSolucionParcial(n, solucion, comensales_sentados, matriz, 1);
-	solucion.clear();
+	solucion[0] = -1;
+	cout << "b" ;
 	cout << "Cota global = " << cota_global << endl;
 
-	backtracking(n, 1, 0, suma, comensales_sentados, matriz, solucion, cota_global);
+	//backtracking(n, 1, 0, suma, comensales_sentados, matriz, solucion, cota_global);
 
 	cout << "Matriz inicial: " << endl;
 	for (int i = 0; i < n; i++){
@@ -158,9 +165,9 @@ int main(int argc, char const *argv[]){
 		cout << endl;
 	}
 
-	cout << "Solución: " << solucion.size() << endl;
+	//cout << "Solución: " << solucion.size() << endl;
 
-	for(int i = 0; i < solucion.size(); i++)
+	for(int i = 0; i < n; i++)
 		cout << solucion[i] << " " ;
 
 	cout << endl << "Suma = " << suma << endl;
