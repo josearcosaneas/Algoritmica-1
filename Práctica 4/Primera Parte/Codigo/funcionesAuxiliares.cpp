@@ -84,7 +84,7 @@ void calcularCompatibilidad(int &valor,int n, int p[], int matrix[][]){
 	// 0 con 1 , 1 con 2, 2 con 3, hasta n-2 con n-1..
 	for (int i = 0; i< n-1; i++){
 		valor  +=  matrix[p[i]][p[i+1]];
-		}
+	}
 	// sumamos el primero con el último
 	// 0 con n-1
 	valor += matrix[p[0]][p[n-1]];
