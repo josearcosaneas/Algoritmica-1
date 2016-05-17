@@ -27,13 +27,13 @@
 }
 
 \usepackage{graphicx} % Allows including images
-\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+
 
 %----------------------------------------------------------------------------------------
 %	TITLE PAGE
 %----------------------------------------------------------------------------------------
 
-\title[Practica 4]{Cena de gala} % The short title appears at the bottom of every slide, the full title is only on the title page
+\title[Práctica 4]{Cena de gala} % The short title appears at the bottom of every slide, the full title is only on the title page
 
 \author{Algorítmica} % Your name
 \institute[UGR] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
@@ -63,7 +63,7 @@ Universidad de Granada \\ % Your institution for the title page
 \begin{frame}
 	\frametitle{Introducción}
 	\begin{itemize}
-		\item El objetivo de esta práctica es diseñar un algoritmo Bactraking, que resuelva uno de los cinco problemas de la práctica y realizar un estudio empírico de su eficiencia.
+		\item El objetivo de esta práctica es diseñar un algoritmo Backtracking, que resuelva uno de los cinco problemas de la práctica y realizar un estudio empírico de su eficiencia.
 	\end{itemize}
 \end{frame}
 
@@ -72,7 +72,7 @@ Universidad de Granada \\ % Your institution for the title page
 \section{Ejercicio} 
 \begin{frame}
 	\frametitle{Enunciado del ejercicio}
-	Se desea sentar a N invitados alrededor de una mesa, de manera que cada invitado tendra a su lado a otros dos. Cada par de invitados tiene un nivel de compatibilidad. Se desea maximizar la compatibilidad de estos comensales.
+	Se desea sentar a N invitados alrededor de una mesa, de manera que cada invitado tendrá a su lado a otros dos. Cada par de invitados tiene un nivel de compatibilidad. Se desea maximizar la compatibilidad de estos comensales.
 	
 \end{frame}
 
@@ -81,20 +81,43 @@ Universidad de Granada \\ % Your institution for the title page
 \begin{frame}
 	\frametitle{Diseño del algoritmo}
 	\begin{itemize}
-		\item \textbf{Solución parcial}: Solucion parcial al problema de tamaño menor que N. (Conjunto \textbf{Sp})
-		\item \textbf{Funcion de poda}: No se me ocurre nada.
-		\item \textbf{Restricciones explícitas}: Los valores que puede tomar la solucion son los enteros de 1 a N. Donde N es el número total de invitados.  
-		\item \textbf{Restricciones implícitas}: Estas restricciones son las que determinan si una función parcial puede llevarnos a una solucion del problema. Si supera un umbral.  
+		\item \textbf{Solución parcial}: Solución parcial al problema de tamaño menor que N. (Conjunto \textbf{Sp})
+		\item \textbf{Restricciones explícitas}: Los valores que puede tomar la solución son los enteros de 1 a N. Donde N es el número total de invitados.  
+		\item \textbf{Restricciones implícitas}: Estas restricciones son las que determinan si una función parcial puede llevarnos a una solución del problema.
 	\end{itemize}
 	
 \end{frame}
 
-\section{Pseudocodigo}
+\section{Pseudocódigo}
 \begin{frame}
-
-	
+	Dada una matriz M[i][j] 
+	Mantenemos en la matriz la afinidad  entre 
+	el comensal i y el comensal j
 \end{frame}
+\begin{frame}
+	Require Matriz, S\_final[N] S\_parcial[N] Sentados[N]={false} comensal\_actual, nivel,cota\_global=0;
 
+	Funcion(S,S\_parcial,Sentados,comensal\_actual,nivel)
+		Sentados[comensal\_actual]=true;
+		S\_parcial[nivel - 1]=comensal\_actual;
+		for i to N{
+			If(Sentados[i]==false){
+				valor\_actual = CalcularSolucionActual(S\_parcial)
+				Funcion(S,S\_parcial,Sentados,i,nivel+1);
+			
+				If(nodo\_actual == nodo\_hoja){
+					valor\_actual = CalcularSolucionActual()
+					If(valor\_actual \textbf{mayor que} valor\_maximo){
+						S\_final = S\_Actual
+						valor\_maximo = valor\_actual
+					} 
+				}
+				Sentados[i]=false;
+			}						
+		}
+		
+			
+\end{frame}
 
 
 
