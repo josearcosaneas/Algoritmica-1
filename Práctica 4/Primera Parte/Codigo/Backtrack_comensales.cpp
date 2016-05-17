@@ -1,7 +1,19 @@
 #include <stdlib.h> // rand
 #include <time.h> // Time()
-#include <iostream>// cin cout
+
 #include <vector>
+#include <iostream>
+#include <ctime>
+#include <cstdlib>
+#include <climits>
+#include <cassert>
+#include <string>
+#include <fstream>
+#include <chrono>
+using namespace std::chrono;
+high_resolution_clock::time_point tantes, tdespues;
+duration<double> transcurrido;
+
 
 using namespace std;
 
@@ -28,7 +40,7 @@ int **generarEntrada(int n){
 
 	for (int i = 0; i < n ;i++){
 		for (int j = i; j < n; j++){
-			if (i==j) 
+			if (i==j)
 				matriz[i][j] = 0;
 			else{
 				int num = 1 + ( rand() % (100) );
@@ -37,11 +49,11 @@ int **generarEntrada(int n){
 			}
 		}
 	}
-	
+
 	return matriz;
 }
 
-/* 
+/*
 	Vamos recorriendo todos los comensales que están sentados, y en función de eso calculamos la suma del
 	que está sentado a su izquierda y a su derecha
 
@@ -59,7 +71,7 @@ int calcularValorActual(int n_comensales, int solucion[], vector<bool> &comensal
 					indices_comensales_sentados.push_back(indice);
 				indice++;
 			}
-			
+
 		}
 	}
 
@@ -75,7 +87,7 @@ int calcularValorActual(int n_comensales, int solucion[], vector<bool> &comensal
 }
 
 
-void backtracking (int n_comensales, int nivel, int comensal, int &cota_local, int solucion[], 
+void backtracking (int n_comensales, int nivel, int comensal, int &cota_local, int solucion[],
 	vector<bool> &comensales_sentados, int **matriz, int solucion_final[]) {
 
 	comensales_sentados[comensal] = true; //Sentamos al comensal para que estamos calculando la posible solución
@@ -84,21 +96,21 @@ void backtracking (int n_comensales, int nivel, int comensal, int &cota_local, i
 
 	for (int siguiente_comensal = 0; siguiente_comensal < n_comensales; siguiente_comensal++) { //Recorremos todos los comensales
 		//Si el comensal que estamos mirando no está sentado pasamos a evaluar
-		if (comensales_sentados[siguiente_comensal] == false) {	
-			//Calculamos la cota que tenemos hasta el momento	
-			cota_local = calcularValorActual(n_comensales, solucion, comensales_sentados, matriz); 
+		if (comensales_sentados[siguiente_comensal] == false) {
+			//Calculamos la cota que tenemos hasta el momento
+			cota_local = calcularValorActual(n_comensales, solucion, comensales_sentados, matriz);
 			//Descendemos en profundidad para evaluar sus hijos.
 			backtracking(n_comensales, nivel + 1, siguiente_comensal, cota_local, solucion, comensales_sentados, matriz, solucion_final);
-			
+
 			if (nivel == (n_comensales - 1)) { //Si estamos en un nodo hoja
-				//Calculamos la cota total que obtenemos con todos los comensales sentados				
+				//Calculamos la cota total que obtenemos con todos los comensales sentados
 				cota_local = calcularValorActual(n_comensales, solucion, comensales_sentados, matriz);
 				//Si la cota que obtenemos es mejor que la máxima que hemos obtenido hasta el momento la actualizamos y guardamos la solución
 				if (cota_local > cota_global_max) {
 					for(int i = 0; i < n_comensales; i++)
 						solucion_final[i] = solucion[i];
 					cota_global_max = cota_local;
-				} 
+				}
 			}else{ //Si no estamos en un nodo hoja
 				cota_local = calcularValorActual(n_comensales, solucion, comensales_sentados, matriz);
 			}
@@ -122,22 +134,10 @@ int main(int argc, char const *argv[]){
 	int solucion[n], solucion_final[n];
 	int **matriz = generarEntrada(n);
 
+	tantes = high_resolution_clock::now();
 	backtracking(n, 1, 0, cota_local, solucion, comensales_sentados, matriz, solucion_final);
-
-	cout << "Matriz inicial: " << endl;
-	for (int i = 0; i < n; i++){
-		for (int j = 0; j < n ;j++){
-			cout << matriz[i][j] << " ";
-		}
-		cout << endl;
-	}
-
-	cout << endl;
-	for(int i = 0; i < n; i++)
-		cout << solucion_final[i] << " " ;
-	cout << endl;
-
-	cout << endl << "Ganancia máxima obtenida = " << cota_global_max << endl;
-
+	tdespues = high_resolution_clock::now();
+  transcurrido = duration_cast<duration<double>>(tdespues - tantes);
+	cout <<  n << " "<< transcurrido.count() << endl;
 	return 0;
 }
