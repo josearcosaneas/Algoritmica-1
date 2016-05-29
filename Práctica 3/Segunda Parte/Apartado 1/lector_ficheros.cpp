@@ -44,8 +44,6 @@ int main(int argc, char* argv[]){
 	vector<Ciudad> ciudades;
 	leerCiudades(ciudades, argv[1]);
 
-	for(int i = 0; i < ciudades.size(); i++)
-		cout << ciudades[i].indice << " " << ciudades[i].x << " " << ciudades[i].y << endl;
-
+	
 	return 0;
 }
