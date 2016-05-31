@@ -262,33 +262,28 @@ int main(int argc, char* argv[]){
 		cerr << "USO: ./" << argv[0] << " fichero_entrada" << endl;
 		exit(1);
 	}
-
+	clock_t t_ini, t_fin;
+	double secs;
 	vector<Ciudad> ciudades, solucion_final;
 	vector<double> vector_distancias_minimas;
 
 	leerCiudades(ciudades, argv[1]);
 	vector<vector<double> > matriz = generaMatriz(ciudades);
 	vector_distancias_minimas = costeMinimo(matriz);
+	t_ini = clock();
 	solucion_final = BB_TSP(matriz, ciudades, vector_distancias_minimas);
 
-	cout << "Matriz de distancias" << endl;
-	for(int i = 0; i < matriz.size(); i++){
-		for(int j = 0; j < matriz.size(); j++){
-			cout << matriz[i][j] << " ";
-		}
-		cout << endl;
-	}
-	cout << endl;
-
+	t_fin = clock();
+	secs = (double)(t_fin - t_ini) / CLOCKS_PER_SEC;
 	double distancia = 0.0;
+	
 	for(int i = 1; i < solucion_final.size(); i++){
 		distancia += matriz[solucion_final[i-1].indice - 1][solucion_final[i].indice - 1];
-		cout << "CIUDAD " << solucion_final[i-1].indice << endl;
+
 	}
-
-	cout << "CIUDAD " << solucion_final[solucion_final.size() - 1].indice << endl;
-
+	
 	distancia += matriz[solucion_final[0].indice - 1][solucion_final[solucion_final.size() - 1].indice - 1];
+
 	cout << "DISTANCIA: " << distancia << endl;
 
 	int nodos_totales = factorial(solucion_final.size());
@@ -296,6 +291,6 @@ int main(int argc, char* argv[]){
 	cout << "NODOS PODADOS " << nodos_totales - nodos_explorados << endl;
 	cout << "NODOS EXPLORADOS " << nodos_explorados << endl;
 	cout << "NODOS EXPANDIDOS " << nodos_expandidos << endl;
-
+	cout << "TIEMPO (seg)" << secs << endl;
 	return 0;
 }

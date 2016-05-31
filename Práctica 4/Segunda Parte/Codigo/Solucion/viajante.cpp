@@ -125,7 +125,8 @@ int main (int argc, char* argv[]) {
 		cerr << "USO: ./" << argv[0] << " archivo_ciudades.tsp" << endl;
 		exit(1);
 	}
-
+	clock_t t_ini, t_fin;
+	double secs;
 	vector<Ciudad> ciudades;
 	vector< vector<double> > matriz_distancias; 
 
@@ -135,26 +136,19 @@ int main (int argc, char* argv[]) {
 	vector<bool> visitadas(ciudades.size(), false);
 	int solucion[ciudades.size()];
 	int solucion_final[ciudades.size()];
-
+	t_ini = clock();
 	backtracking (1, ciudades[0].indice-1, visitadas, solucion, matriz_distancias, cota_local, solucion_final);
-
+	t_fin = clock();
 	double distancia = 0;
-
-	cout << "Matriz de distancias" << endl;
-	for(int i = 0; i < matriz_distancias.size(); i++){
-		for(int j = 0; j < matriz_distancias.size(); j++){
-			cout << matriz_distancias[i][j] << " ";
-		}
-		cout << endl;
-	}
-	cout << endl;
+	secs = (double)(t_fin - t_ini) / CLOCKS_PER_SEC;
+	
 
 	for(int i = 1; i < ciudades.size(); i++){
 		distancia += matriz_distancias[solucion_final[i-1]][solucion_final[i]];
-		cout << "CIUDAD " << solucion_final[i-1] + 1<< endl;
+
 	}
 
-	cout << "CIUDAD " << solucion_final[visitadas.size() - 1] + 1<< endl;
+	
 
 	distancia += matriz_distancias[0][solucion_final[ciudades.size() - 1]];
 
@@ -164,7 +158,7 @@ int main (int argc, char* argv[]) {
 	cout << "NODOS TOTALES " << nodos_totales << endl;
 	cout << "NODOS PODADOS " << nodos_totales - nodos_explorados << endl;
 	cout << "NODOS EXPLORADOS " << nodos_explorados << endl;
-
+	cout << "TIEMPO (seg)" << secs << endl;
 
 	return 0;
 }
